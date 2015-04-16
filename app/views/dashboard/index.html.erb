@@ -6,9 +6,12 @@
     </div>
     <h2>Followed Items</h2>
     <ul>
+    <%= current_user.first_name %>
+    <% current_user.list.items.each do |item| %>
       <li class="row">
-        <p>Item 1</p>
+        <p><%= item.name %></p>
       </li>
+    <% end %>
     </ul>
   </div>
 

@@ -1,3 +1,4 @@
 class ListItem < ActiveRecord::Base
-  has_many :lists, :items
+  belongs_to :list
+  belongs_to :item
 end

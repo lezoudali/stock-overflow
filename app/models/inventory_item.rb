@@ -1,3 +1,4 @@
 class InventoryItem < ActiveRecord::Base
-  has_many :items, :inventories
+  belongs_to :item
+  belongs_to :inventory
 end
