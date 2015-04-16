@@ -62,4 +62,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
+gem 'figaro'
 gem 'airbrake'
+gem 'omniauth'
+gem 'omniauth-facebook'
