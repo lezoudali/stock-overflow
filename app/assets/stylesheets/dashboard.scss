@@ -2,18 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  background: #3C3C3C;
-}
-
-header {
-  height: 50px;
-  background: #303030;
-  padding: 5px;
-}
 
 .profile-pic {
-  float: right;
+  float: left;
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -22,16 +13,19 @@ header {
 
 .dashboard {
   padding-left: 20%;
+  padding-top: 50px;
   background: #3C3C3C;
 }
 
-.side-nav {
+.side-nav.container {
   position: fixed;
   top: 0;
   left: 0;
   background: rgb(36, 35, 35);
   height: 100%;
   width: 20%;
+  box-shadow: 0 0 3px #000;
+  z-index: 101;
 }
 
 .graph-holder {
