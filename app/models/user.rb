@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :list
   belongs_to :inventory
 
+  after_create :create_list
+  
   def name
     "#{first_name} #{last_name}"
   end
@@ -19,4 +21,11 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,20]
       end
   end
+
+  private
+
+    def create_list
+      self.list ||= List.new
+      self.save
+    end
 end
