@@ -22,11 +22,17 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: rgb(36, 35, 35);
+  background: #2D2D2D;
   height: 100%;
   width: 20%;
   box-shadow: 0 0 3px #000;
   z-index: 101;
+
+  > .row:first-child {
+    background: rgb(36, 35, 35);
+    padding: 10px 0;
+    box-shadow: -1px 0 3px #000;
+  }
 }
 
 .graph-holder {
