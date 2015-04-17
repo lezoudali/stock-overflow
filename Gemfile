@@ -69,3 +69,4 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "chartkick"
 gem "awesome_print"
+gem 'json'
