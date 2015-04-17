@@ -11,55 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416194841) do
+ActiveRecord::Schema.define(version: 20150417184906) do
 
-  create_table "inventories", force: :cascade do |t|
+  create_table "stocks", force: :cascade do |t|
+    t.string   "symbol"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_stocks", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "stock_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "inventory_items", force: :cascade do |t|
-    t.integer  "item_id"
-    t.integer  "inventory_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.float    "original_price"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "image_url"
-  end
-
-  create_table "list_items", force: :cascade do |t|
-    t.integer  "item_id"
-    t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "listings", force: :cascade do |t|
-    t.integer  "item_id"
-    t.float    "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "lists", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "user_stocks", ["stock_id"], name: "index_user_stocks_on_stock_id"
+  add_index "user_stocks", ["user_id"], name: "index_user_stocks_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "first_name",             default: ""
+    t.string   "last_name",              default: ""
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -70,6 +42,8 @@ ActiveRecord::Schema.define(version: 20150416194841) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
     t.integer  "list_id"

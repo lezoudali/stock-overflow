@@ -4,28 +4,20 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
-  belongs_to :list
-  belongs_to :inventory
-
-  after_create :create_list
+  
+  has_many :user_stocks
+  has_many :stocks, through: :user_stocks
   
   def name
     "#{first_name} #{last_name}"
   end
 
   def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.email = auth.info.email
-        user.password = Devise.friendly_token[0,20]
-      end
-  end
-
-  private
-
-    def create_list
-      self.list ||= List.new
-      self.save
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
     end
+  end
 end
