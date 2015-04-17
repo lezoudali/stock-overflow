@@ -2,7 +2,7 @@
   <div class="side-nav container">
     <div class="row">
       <div class="col col-sm-4">
-        <div class="profile-pic"></div>
+        <%= image_tag current_user.image, class: "profile-pic" %>
       </div>
       <div>
         <p><%= current_user.name %></p>
