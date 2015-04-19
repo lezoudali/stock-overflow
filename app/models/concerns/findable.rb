@@ -10,7 +10,7 @@ module Findable
   end
 
   def find_tweets(n = 5)
-    $twitter_client.search("$#{symbol} OR ##{symbol}", result_type: "recent", lang: "en").take(n).collect do |tweet|
+    $twitter_client.search("$#{symbol}", result_type: "recent", lang: "en").take(n).collect do |tweet|
       tweet
     end
   end
