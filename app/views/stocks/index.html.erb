@@ -1,0 +1,13 @@
+<h1>Companies</h1>
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Symbol</th>
+  </tr>
+<% @stocks.each do |stock| %>
+  <tr>
+    <td><%= link_to stock.company, stock_path(stock) %></td>
+    <td><%= stock.symbol %></td>
+  </tr>
+<% end %>
+</table>
