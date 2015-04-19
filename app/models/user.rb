@@ -20,4 +20,10 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def get_stocks_tweets
+    self.stocks.each_with_object([]) do |stock, tweets|
+      tweets += stock.find_tweets
+    end
+  end
 end

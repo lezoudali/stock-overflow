@@ -1,7 +1,17 @@
 <div>
   <%= render "layouts/nav" %>
 
-  <div class="dashboard">
-    <div class="graph-holder">graph goes here</div>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-10 graph-holder">graph goes here</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-5 twitter">
+      <% current_user.get_stocks_tweets do |tweet| %>
+        <%= tweet %>
+      <% end %>
+    </div>
+    <div class="col-sm-5 articles">
+      article
+    </div>
   </div>
 </div>
