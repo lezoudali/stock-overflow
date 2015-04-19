@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   resources :users, only: [:edit, :update, :show]
-  resources :stocks, only: [:show]
 end
