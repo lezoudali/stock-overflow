@@ -4,12 +4,11 @@
       <%= image_tag current_user.image, class: "profile-pic" %>
     </div>
     <div>
-      <div><%= link_to current_user.name, current_user %></div>
+      <div><%= link_to current_user.name, root_path %></div>
       <%= link_to('', destroy_user_session_path, :method => :delete, class: "glyphicon glyphicon-log-out") %>
       <%= link_to('', edit_user_path(current_user), class: "glyphicon glyphicon-user") %>
     </div>
   </div>
-  <h2>Followed Items</h2>
   <ul>
   
   </ul>
