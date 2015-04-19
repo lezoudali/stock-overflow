@@ -22,8 +22,20 @@ class User < ActiveRecord::Base
   end
 
   def get_stocks_tweets
-    self.stocks.each_with_object([]) do |stock, tweets|
-      tweets += stock.find_tweets
+    tweets = []
+    self.stocks.first(5).each do |stock|
+      tweets << stock.find_tweets
     end
+    tweets.flatten
   end
+
+  def get_stocks_articles
+    articles = []
+    self.stocks.first(5).each do |stock|
+      articles << stock.find_articles
+    end
+    articles.flatten
+  end
+
+
 end
