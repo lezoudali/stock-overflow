@@ -10,6 +10,8 @@
     </div>
   </div>
   <ul>
-  
+    <% current_user.stocks.each do |stock| %>
+      <li><%= link_to stock.company, "/?symbol=#{stock.symbol}" %></li>
+    <% end %>
   </ul>
 </div>
