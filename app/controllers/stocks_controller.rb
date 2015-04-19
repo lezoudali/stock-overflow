@@ -4,5 +4,8 @@ class StocksController < ApplicationController
     @stocks = Stock.all
   end
 
+  def show
+  end
+
 
 end

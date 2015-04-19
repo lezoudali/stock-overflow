@@ -1,13 +1,19 @@
-<h1>Companies</h1>
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Symbol</th>
-  </tr>
-<% @stocks.each do |stock| %>
-  <tr>
-    <td><%= link_to stock.company, stock_path(stock) %></td>
-    <td><%= stock.symbol %></td>
-  </tr>
-<% end %>
-</table>
+<div>
+  <%= render "layouts/nav" %>
+  <div class="container">
+    <div class="col-sm-offset-2 col-sm-10" >
+      <table>
+           <tr>
+             <th>Company</th>
+             <th>Symbol</th>
+           </tr>
+             <% @stocks.each do |stock| %>
+           <tr>
+             <td><%= link_to stock.company, stock_path(stock) %></td>
+             <td><%= stock.symbol %></td>
+           </tr>
+            <% end %>
+      </table>
+   </div>
+  </div> 
+</div>
