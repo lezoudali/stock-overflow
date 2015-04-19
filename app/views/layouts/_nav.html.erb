@@ -9,6 +9,9 @@
       <%= link_to('', edit_user_path(current_user), class: "glyphicon glyphicon-user") %>
     </div>
   </div>
+  <%= form_tag "/", method: "get" do %>
+    <%= text_field_tag :symbol, "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)" %>
+  <% end %>
   <ul>
     <% current_user.stocks.each do |stock| %>
       <li><%= link_to stock.company, "/?symbol=#{stock.symbol}" %></li>
