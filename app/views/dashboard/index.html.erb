@@ -1,19 +1,5 @@
 <div>
-  <div class="side-nav container">
-    <div class="row">
-      <div class="col col-sm-4">
-        <div class="profile-pic"></div>
-      </div>
-      <div>
-        <p><%= current_user.name %></p>
-        <%= link_to('', destroy_user_session_path, :method => :delete, class: "glyphicon glyphicon-log-out") %>
-      </div>
-    </div>
-    <h2>Followed Items</h2>
-    <ul>
-    
-    </ul>
-  </div>
+  <%= render "layouts/nav" %>
 
   <div class="dashboard">
     <div class="graph-holder">graph goes here</div>

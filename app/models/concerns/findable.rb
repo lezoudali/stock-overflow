@@ -8,4 +8,10 @@ module Findable
     resp = JSON Net::HTTP.get(uri)
     resp['response']['docs']
   end
+
+  def find_tweets(n = 5)
+    $twitter_client.search(symbol, result_type: "recent").take(n).collect do |tweet|
+      tweet.text
+    end
+  end
 end

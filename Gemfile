@@ -67,6 +67,8 @@ gem 'figaro'
 gem 'airbrake'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem "chartkick"
-gem "awesome_print"
+gem 'chartkick'
+gem 'awesome_print'
 gem 'json'
+gem 'cancan'
+gem 'twitter'
