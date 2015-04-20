@@ -11,7 +11,7 @@
         rangeSelector: {
           selected: 0
         },
-        title: { text: 'Stock Trends' },
+        title: { text: "<%= @stock.company %>" },
         xAxis: { 
           type: 'datetime'
         },
@@ -19,16 +19,17 @@
           title: { text: 'Stock Price'}
         },
         <% if @stock %>
-        series: [{
-          pointInterval: <%= 1.day * 1000 %>,
-          pointStart: <%= 1.year.ago.to_i * 1000 %>,
-          data: <%= @stock.prices %>,
-          tooltip: {
-            valueDecimals: 3
-          }
-        }]
+          series: [{
+            name: "<%= @stock.symbol %>",
+            pointInterval: <%= 1.day * 1000 %>,
+            pointStart: <%= 364.days.ago.to_i * 1000 %>,
+            data: <%= @stock.prices_with_weekend %>,
+            tooltip: {
+              valueDecimals: 3
+            }
+          }]
         <% else %>
-        series: <%= raw @series.to_json %>
+          series: <%= raw @series.to_json %>
         <% end %>
       });
     });
@@ -37,13 +38,13 @@
   <div class="row">
     <div class="col-sm-offset-2 col-sm-5 twitter">
       <h3>Tweets</h3>
-      <% current_user.get_stocks_tweets.each do |tweet| %>
+      <% @stock.find_tweets.each do |tweet| %>
       <p><%= link_to tweet.text, tweet.url.to_s %></p>
       <% end %>
     </div>
     <div class="col-sm-5 articles">
       <h3>Articles</h3>
-      <% current_user.get_stocks_articles.each do |article| %>
+      <% @stock.find_articles.each do |article| %>
       <p><%= link_to article["snippet"], article["web_url"] %></p>
       <% end %>
     </div>
