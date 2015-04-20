@@ -4,7 +4,13 @@ class StocksController < ApplicationController
     @stocks = Stock.all
   end
 
-  def show
+  def update
+    stock = Stock.find_by_id(params[:stock][:id])
+    unless stock.users.include?(current_user)
+      stock.users << current_user unless stock.users.include?(current_user)
+      flash[:success] = "You are now following #{stock.company}"
+    end
+    redirect_to :back
   end
 
 
