@@ -38,13 +38,13 @@
   <div class="row">
     <div class="col-sm-offset-2 col-sm-5 twitter">
       <h3>Tweets</h3>
-      <% current_user.get_stocks_tweets.each do |tweet| %>
+      <% @stock.find_tweets.each do |tweet| %>
       <p><%= link_to tweet.text, tweet.url.to_s %></p>
       <% end %>
     </div>
     <div class="col-sm-5 articles">
       <h3>Articles</h3>
-      <% current_user.get_stocks_articles.each do |article| %>
+      <% @stock.find_articles.each do |article| %>
       <p><%= link_to article["snippet"], article["web_url"] %></p>
       <% end %>
     </div>
