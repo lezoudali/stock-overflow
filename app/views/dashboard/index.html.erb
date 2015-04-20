@@ -1,12 +1,9 @@
 <div>
   <%= render "layouts/nav" %>
 
-  <div class="dashboard"m>
+  <div class="dashboard">
     <div id="orders_chart" style="width: 100%; height: 400px;"></div>
 
-    <table class="pretty">
-      <!-- Orders table code here -->
-    </table>
     <script type="text/javascript" charset="utf-8">
     $(function () {
       new Highcharts.StockChart({
@@ -21,6 +18,7 @@
         yAxis: {
           title: { text: 'Stock Price'}
         },
+        <% if @stock %>
         series: [{
           pointInterval: <%= 1.day * 1000 %>,
           pointStart: <%= 1.year.ago.to_i * 1000 %>,
@@ -29,8 +27,27 @@
             valueDecimals: 3
           }
         }]
+        <% else %>
+        series: <%= raw @series.to_json %>
+        <% end %>
       });
     });
     </script>
-  </div>v
+  </div>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-5 twitter">
+      <h3>Tweets</h3>
+      <% current_user.get_stocks_tweets.each do |tweet| %>
+      <p><%= link_to tweet.text, tweet.url.to_s %></p>
+      <% end %>
+    </div>
+    <div class="col-sm-5 articles">
+      <h3>Articles</h3>
+      <% current_user.get_stocks_articles.each do |article| %>
+      <p><%= link_to article["snippet"], article["web_url"] %></p>
+      <% end %>
+    </div>
+  </div>
+
+
 </div>
