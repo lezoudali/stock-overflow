@@ -23,13 +23,14 @@
 
 require "nokogiri"
 require "open-uri"
-require "pry"
 
 html = File.read(open("http://en.wikipedia.org/wiki/List_of_S%26P_500_companies"))
 noko = Nokogiri::HTML(html)
 cells = noko.css("h2+table td:first-child a, h2+table td:nth-child(2) a")
 cells.each_with_index do |cell, i|
   if i % 2 == 0
-    Stock.create(symbol: cells[i].text, company: cells[i+1].text)
+    price = MarketData.quote(cells[i].text).fetch("LastPrice")
+    Stock.create(symbol: cells[i].text, company: cells[i+1].text, last_price: price)
   end
+  sleep(2)
 end

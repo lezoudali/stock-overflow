@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420144152) do
+ActiveRecord::Schema.define(version: 20150420195654) do
 
   create_table "forum_posts", force: :cascade do |t|
     t.integer  "forum_thread_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150420144152) do
     t.string   "company"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "last_price"
   end
 
   create_table "user_stocks", force: :cascade do |t|
