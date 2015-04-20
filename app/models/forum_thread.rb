@@ -1,20 +1,19 @@
 # == Schema Information
 #
-# Table name: user_stocks
+# Table name: forum_threads
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  stock_id   :integer
+#  subject    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_user_stocks_on_stock_id  (stock_id)
-#  index_user_stocks_on_user_id   (user_id)
+#  index_forum_threads_on_user_id  (user_id)
 #
 
-class UserStock < ActiveRecord::Base
+class ForumThread < ActiveRecord::Base
   belongs_to :user
-  belongs_to :stock
+  has_many :forum_posts
 end

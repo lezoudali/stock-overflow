@@ -53,6 +53,7 @@ group :test, :development do
   gem 'pry-nav'
   gem 'guard-rspec', require: false
   gem 'thin'
+  gem 'annotate'
 end
 
 group :production do
