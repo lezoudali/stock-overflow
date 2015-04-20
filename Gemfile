@@ -72,5 +72,5 @@ gem 'awesome_print'
 gem 'json'
 gem 'cancan'
 gem 'twitter'
-gem "highcharts-rails", "~> 3.0.0"
+gem "highstock-rails"
 gem 'turbolinks'

@@ -7,4 +7,11 @@ class Stock < ActiveRecord::Base
     user.stocks.include?(self)
   end
 
+  def prices(days=365)
+    MarketData.chart(self.symbol, days)["Elements"][0]["DataSeries"]["close"]["values"]
+  end
+
+  def dates(days=365)
+    MarketData.chart(self.symbol, days)["Dates"]
+  end
 end

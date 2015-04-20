@@ -121,7 +121,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashie (3.4.1)
-    highcharts-rails (3.0.10)
+    highstock-rails (1.3.10)
       railties (>= 3.1)
     hitimes (1.2.2)
     http (0.6.3)
@@ -337,7 +337,7 @@ DEPENDENCIES
   figaro
   google-analytics-rails
   guard-rspec
-  highcharts-rails (~> 3.0.0)
+  highstock-rails
   jbuilder (~> 2.0)
   jquery-rails
   json
