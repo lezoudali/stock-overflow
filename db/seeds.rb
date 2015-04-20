@@ -29,8 +29,13 @@ noko = Nokogiri::HTML(html)
 cells = noko.css("h2+table td:first-child a, h2+table td:nth-child(2) a")
 cells.each_with_index do |cell, i|
   if i % 2 == 0
+    stock = Stock.find_by(company: cells[i+1].text)
     price = MarketData.quote(cells[i].text).fetch("LastPrice")
-    Stock.create(symbol: cells[i].text, company: cells[i+1].text, last_price: price)
+    if stock.nil?
+      Stock.create(symbol: cells[i].text, company: cells[i+1].text, last_price: price)
+    else
+      stock.update_attributes(last_price: price)
+    end
   end
-  sleep(2)
+  sleep(1)
 end
