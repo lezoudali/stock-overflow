@@ -2,7 +2,8 @@ class StocksController < ApplicationController
   include StocksHelper
 
   def index
-    @stocks = Stock.all
+    @search = Stock.search(params[:q])
+    @stocks = @search.result.paginate(page: params[:page], per_page: 50)
   end
 
   def update
@@ -16,6 +17,4 @@ class StocksController < ApplicationController
     end
     redirect_to :back
   end
-
-
 end
