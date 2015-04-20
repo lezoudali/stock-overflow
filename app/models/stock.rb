@@ -14,4 +14,8 @@ class Stock < ActiveRecord::Base
   def dates(days=365)
     MarketData.chart(self.symbol, days)["Dates"]
   end
+
+  def prices_dates(days=365)
+    prices(days).zip(dates(days))
+  end
 end
