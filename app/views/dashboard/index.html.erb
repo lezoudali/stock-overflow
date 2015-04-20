@@ -11,7 +11,7 @@
         rangeSelector: {
           selected: 0
         },
-        title: { text: 'Stock Trends' },
+        title: { text: "<%= @stock.company %>" },
         xAxis: { 
           type: 'datetime'
         },
@@ -20,9 +20,10 @@
         },
         <% if @stock %>
           series: [{
+            name: "<%= @stock.symbol %>",
             pointInterval: <%= 1.day * 1000 %>,
-            pointStart: <%= 1.year.ago.to_i * 1000 %>,
-            data: <%= @stock.prices %>,
+            pointStart: <%= 364.days.ago.to_i * 1000 %>,
+            data: <%= @stock.prices_with_weekend %>,
             tooltip: {
               valueDecimals: 3
             }
