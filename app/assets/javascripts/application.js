@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require turbolinks
+//= require highstock
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require local_time
 //= require_tree .
+
+

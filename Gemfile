@@ -73,8 +73,6 @@ gem 'awesome_print'
 gem 'json'
 gem 'cancan'
 gem 'twitter'
-
-
 gem "sucker_punch"
 gem "ransack"
 gem "local_time"
@@ -83,3 +81,5 @@ gem "github-markdown"
 gem "gemoji"
 gem "sanitize"
 gem "paranoia"
+gem "highstock-rails"
+gem 'turbolinks'

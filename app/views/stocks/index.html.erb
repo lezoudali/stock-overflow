@@ -1,19 +1,26 @@
 <div>
   <%= render "layouts/nav" %>
   <div class="container">
-    <div class="col-sm-offset-2 col-sm-10" >
-      <table class="table table-bordered">
-           <tr>
-             <th>Company</th>
-             <th>Symbol</th>
-           </tr>
-             <% @stocks.each do |stock| %>
-           <tr>
-             <td><%= link_to stock.company, stock_path(stock) %></td>
-             <td><%= stock.symbol %></td>
-           </tr>
-            <% end %>
+    <div class="col-sm-offset-2 col-sm-6" >
+      <% if flash[:success] %>
+        <div class="alert alert-success text-center" role="alert"><%= flash[:success] %></div>
+      <% end %>
+      <table class="table">
+        <thead>
+          <th>Company</th>
+          <th>Symbol</th>
+          <th></th>
+        </thead>
+        <% @stocks.each do |stock| %>
+          <tr>
+            <td><%= link_to stock.company, "/?symbol=#{stock.symbol}" %></td>
+            <td><%= stock.symbol %></td>
+            <td>
+              <%= render_button_for(stock) %>
+            </td>
+          </tr>
+        <% end %> 
       </table>
-   </div>
+    </div>
   </div> 
 </div>
