@@ -44,3 +44,26 @@ p {
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
+
+
+/* Forum */
+
+.forum_post {
+  border-top: 1px solid #ccc;
+  padding: 8px 0px;
+
+  &:target {
+    background-color: rgb(248, 238, 199);
+    padding: 8px;
+  }
+}
+
+.btn.new-thread, .search-thread {
+  margin-top: 40px;
+  margin-right: 10px;
+}
+
+
+
+
+

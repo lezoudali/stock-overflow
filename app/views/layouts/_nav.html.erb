@@ -13,6 +13,7 @@
     <%= text_field_tag :symbol, "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)" %><br>
   <% end %>
   <%= link_to "view list of all stocks", stocks_path %><br>
+  <%= link_to "forum", forum_threads_path %><br>
   <ul>
     <% current_user.stocks.each do |stock| %>
       <li><%= link_to stock.company, "/?symbol=#{stock.symbol}" %></li>

@@ -21,6 +21,7 @@
 #  provider               :string
 #  uid                    :string
 #  list_id                :integer
+#  deleted_at             :datetime
 #
 # Indexes
 #
@@ -30,6 +31,8 @@
 #
 
 class User < ActiveRecord::Base
+  acts_as_paranoid 
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -42,7 +45,11 @@ class User < ActiveRecord::Base
   has_many :forum_posts
   
   def name
-    "#{first_name} #{last_name}"
+    if deleted_at?
+      "Deleted User"
+    else
+      "#{first_name} #{last_name}"
+    end
   end
 
   def self.from_omniauth(auth)
