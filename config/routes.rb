@@ -12,4 +12,8 @@ Rails.application.routes.draw do
 
   resources :stocks, only: [:index, :update]
 
+  resources :forum_threads do 
+    resources :forum_posts, module: :forum_threads
+  end
+
 end

@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417184906) do
+ActiveRecord::Schema.define(version: 20150420144152) do
+
+  create_table "forum_posts", force: :cascade do |t|
+    t.integer  "forum_thread_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "forum_posts", ["forum_thread_id"], name: "index_forum_posts_on_forum_thread_id"
+  add_index "forum_posts", ["user_id"], name: "index_forum_posts_on_user_id"
+
+  create_table "forum_threads", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "forum_threads", ["user_id"], name: "index_forum_threads_on_user_id"
 
   create_table "stocks", force: :cascade do |t|
     t.string   "symbol"
@@ -49,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150417184906) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "list_id"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

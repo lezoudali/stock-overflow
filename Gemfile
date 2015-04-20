@@ -53,6 +53,7 @@ group :test, :development do
   gem 'pry-nav'
   gem 'guard-rspec', require: false
   gem 'thin'
+  gem 'annotate'
 end
 
 group :production do
@@ -72,5 +73,13 @@ gem 'awesome_print'
 gem 'json'
 gem 'cancan'
 gem 'twitter'
+gem "sucker_punch"
+gem "ransack"
+gem "local_time"
+gem "html-pipeline"
+gem "github-markdown"
+gem "gemoji"
+gem "sanitize"
+gem "paranoia"
 gem "highstock-rails"
 gem 'turbolinks'

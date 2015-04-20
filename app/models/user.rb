@@ -1,4 +1,38 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  image                  :string
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  provider               :string
+#  uid                    :string
+#  list_id                :integer
+#  deleted_at             :datetime
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_list_id               (list_id)
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
+
 class User < ActiveRecord::Base
+  acts_as_paranoid 
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,9 +41,15 @@ class User < ActiveRecord::Base
   
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
+  has_many :forum_threads
+  has_many :forum_posts
   
   def name
-    "#{first_name} #{last_name}"
+    if deleted_at?
+      "Deleted User"
+    else
+      "#{first_name} #{last_name}"
+    end
   end
 
   def self.from_omniauth(auth)
