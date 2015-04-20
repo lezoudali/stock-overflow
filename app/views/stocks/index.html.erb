@@ -16,10 +16,7 @@
             <td><%= link_to stock.company, "/?symbol=#{stock.symbol}" %></td>
             <td><%= stock.symbol %></td>
             <td>
-              <%= form_for stock do |f| %>
-                <%= f.hidden_field :id %>
-                <%= f.submit :Follow, class: "btn btn-primary" %>
-              <% end %>
+              <%= render_button_for(stock) %>
             </td>
           </tr>
         <% end %> 
