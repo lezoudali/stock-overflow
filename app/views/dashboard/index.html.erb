@@ -11,7 +11,11 @@
         rangeSelector: {
           selected: 0
         },
-        title: { text: "<%= @stock.company %>" },
+        <% if @stock %>
+          title: { text: "<%= @stock.company %>" },
+        <% else %>
+          title: { text: "Stock Trends" },
+        <% end %>
         xAxis: { 
           type: 'datetime'
         },
@@ -38,14 +42,18 @@
   <div class="row">
     <div class="col-sm-offset-2 col-sm-5 twitter">
       <h3>Tweets</h3>
-      <% @stock.find_tweets.each do |tweet| %>
-      <p><%= link_to tweet.text, tweet.url.to_s %></p>
+      <% if @stock %>
+        <% @stock.find_tweets.each do |tweet| %>
+          <p><%= link_to tweet.text, tweet.url.to_s %></p>
+        <% end %>
       <% end %>
     </div>
     <div class="col-sm-5 articles">
       <h3>Articles</h3>
-      <% @stock.find_articles.each do |article| %>
-      <p><%= link_to article["snippet"], article["web_url"] %></p>
+      <% if @stock %>
+        <% @stock.find_articles.each do |article| %>
+          <p><%= link_to article.text, article.url.to_s %></p>
+        <% end %>
       <% end %>
     </div>
   </div>
