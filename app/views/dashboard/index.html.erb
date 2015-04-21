@@ -55,18 +55,22 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="tweets">
-          <% if @stock %>
-            <% @stock.find_tweets.each do |tweet| %>
-              <p><%= link_to tweet.text, tweet.url.to_s %></p>
+          <ul>
+            <% if @stock %>
+              <% @stock.find_tweets.each do |tweet| %>
+                <li><%= link_to tweet.text, tweet.url.to_s %></li>
+              <% end %>
             <% end %>
-          <% end %>
+          </ul>
         </div>
         <div role="tabpanel" class="tab-pane" id="articles">
-          <% if @stock %>
-            <% @stock.find_articles.each do |article| %>
-              <p><%= link_to article["snippet"], article["web_url"] %></p>
+          <ul>
+            <% if @stock %>
+              <% @stock.find_articles.each do |article| %>
+                <li><%= link_to article["snippet"], article["web_url"] %></li>
+              <% end %>
             <% end %>
-          <% end %>
+          </ul>
         </div>
       </div>
     </div>

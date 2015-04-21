@@ -18,7 +18,7 @@
     <% current_user.stocks.each do |stock| %>
       <li class='row'>
         <div class="col-md-10">
-        <%= link_to "#{stock.company} (#{stock.symbol})", "/?symbol=#{stock.symbol}" %>
+          <%= link_to "#{stock.company} (#{stock.symbol})", "/?symbol=#{stock.symbol}" %>
         </div>
         <%= form_for stock do |f| %>
           <%= f.hidden_field :id %>
