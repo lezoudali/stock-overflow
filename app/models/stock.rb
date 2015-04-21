@@ -24,7 +24,10 @@ class Stock < ActiveRecord::Base
   end
 
   def prices(days=365)
-    MarketData.chart(self.symbol, days)["Elements"][0]["DataSeries"]["close"]["values"]
+    begin 
+      MarketData.chart(self.symbol, days)["Elements"][0]["DataSeries"]["close"]["values"]
+    rescue
+    end
   end
 
   def prices_with_weekend(days=365)
