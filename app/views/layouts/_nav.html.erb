@@ -20,11 +20,13 @@
         <div class="col-md-10">
           <%= link_to "#{stock.company} (#{stock.symbol})", "/?symbol=#{stock.symbol}" %>
         </div>
-        <%= form_for stock do |f| %>
-          <%= f.hidden_field :id %>
-          <%= hidden_field_tag :follow, false %>
-          <%= f.submit :x, class: "btn btn-danger btn-xs" %>
-        <% end %>
+        <div class="col-md-1">
+          <%= form_for stock do |f| %>
+            <%= f.hidden_field :id %>
+            <%= hidden_field_tag :follow, false %>
+            <%= f.submit :x, class: "btn btn-danger btn-xs" %>
+          <% end %>
+        </div>
       </li>
     <% end %>
   </ul>

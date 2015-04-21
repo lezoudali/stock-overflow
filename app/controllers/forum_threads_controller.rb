@@ -27,6 +27,11 @@ class ForumThreadsController < ApplicationController
     end  
   end
 
+  def destroy
+    @forum_thread.destroy
+    redirect_to forum_threads_path
+  end
+
   private
 
   def set_forum_thread
