@@ -52,7 +52,7 @@
       <h3>Articles</h3>
       <% if @stock %>
         <% @stock.find_articles.each do |article| %>
-          <p><%= link_to article.text, article.url.to_s %></p>
+          <p><%= link_to article["snippet"], article["web_url"] %></p>
         <% end %>
       <% end %>
     </div>
