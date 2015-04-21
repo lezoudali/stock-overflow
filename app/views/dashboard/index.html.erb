@@ -39,24 +39,40 @@
     });
     </script>
   </div>
-  <div class="row">
-    <div class="col-sm-offset-2 col-sm-5 twitter">
-      <h3>Tweets</h3>
-      <% if @stock %>
-        <% @stock.find_tweets.each do |tweet| %>
-          <p><%= link_to tweet.text, tweet.url.to_s %></p>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="col-sm-5 articles">
-      <h3>Articles</h3>
-      <% if @stock %>
-        <% @stock.find_articles.each do |article| %>
-          <p><%= link_to article["snippet"], article["web_url"] %></p>
-        <% end %>
-      <% end %>
+
+  <!-- Tab Panel Row -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-5">
+        <div role="tabpanel">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#tweets" aria-controls="tweets" role="tab" data-toggle="tab">Tweets</a></li>
+            <li role="presentation"><a href="#articles" aria-controls="articles" role="tab" data-toggle="tab">Articles</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tweets">
+              <% if @stock %>
+                <% @stock.find_tweets.each do |tweet| %>
+                  <p><%= link_to tweet.text, tweet.url.to_s %></p>
+                <% end %>
+              <% end %>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="articles">
+              <% if @stock %>
+                <% @stock.find_articles.each do |article| %>
+                  <p><%= link_to article["snippet"], article["web_url"] %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- End Tab Panel Row -->
 
 
 </div>
