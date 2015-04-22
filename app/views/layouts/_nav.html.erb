@@ -14,7 +14,7 @@
   <% end %>
   <%= link_to "view all stocks", stocks_path %><br>
   <%= link_to "forum", forum_threads_path %><br>
-  <ul>
+  <ul id="stock-list">
     <% current_user.stocks.each do |stock| %>
       <li class='row'>
         <div class="col-md-10">
