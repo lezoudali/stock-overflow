@@ -3,6 +3,8 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
 #  image                  :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -18,14 +20,11 @@
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
-#  list_id                :integer
 #  deleted_at             :datetime
-#  full_name              :string
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
-#  index_users_on_list_id               (list_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
@@ -35,8 +34,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable,
-         :omniauthable, :omniauth_providers => [:twitter]
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
   
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
@@ -47,7 +46,7 @@ class User < ActiveRecord::Base
     if deleted_at?
       "Deleted User"
     else
-      "#{full_name}"
+      "#{first_name} #{last_name}"
     end
   end
 
