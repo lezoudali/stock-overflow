@@ -4,7 +4,7 @@
 #
 #  id                     :integer          not null, primary key
 #  image                  :string
-#  email                  :string           default("")
+#  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
+         :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:twitter]
   
   has_many :user_stocks
