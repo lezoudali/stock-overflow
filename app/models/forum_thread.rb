@@ -9,4 +9,9 @@ class ForumThread < ActiveRecord::Base
 
   validates :subject, presence: true
   validates_associated :forum_posts
+
+
+  def num_of_replies
+    forum_posts.count
+  end
 end

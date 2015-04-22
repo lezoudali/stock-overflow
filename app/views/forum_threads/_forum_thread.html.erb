@@ -1,11 +1,20 @@
 <div class="thread">
-  <h2 class="title">
-    <%= link_to forum_thread.subject, forum_thread %>
-    <%= link_to "Reply", "/forum_threads/#{forum_thread.id}/#forum_post_body", class: "btn btn-default pull-right" %>
-    <% if current_user == forum_thread.user %>
-      <%= link_to "Delete", forum_thread, method: :delete, data: { confirm: "Are you sure you want to destroy this thread?" }, class: "btn btn-default text-danger pull-right" %>
+  <div class="replies" class="text-center">
+    <%= link_to forum_thread do %>
+      <p><%= forum_thread.num_of_replies%></p>
+      <p><%= forum_thread.num_of_replies == 1 ? "Reply" : "Replies" %> </p>
     <% end %>
-  </h2>
-  <p class="date">Created at <%= local_time_ago forum_thread.created_at %> by <%= link_to forum_thread.user.name, "#"  %></p>
-  <p class="date"> <%= pluralize(forum_thread.forum_posts.count, "reply") %></p>
+  </div>
+  <div class="thread_list">
+    <h2 class="title">
+      <%= link_to forum_thread.subject, forum_thread %>
+      <%= link_to "Reply", "/forum_threads/#{forum_thread.id}/#forum_post_body", class: "btn btn-default pull-right" %>
+      <% if current_user == forum_thread.user %>
+        <%= link_to "Delete", forum_thread, method: :delete, data: { confirm: "Are you sure you want to destroy this thread?" }, class: "btn btn-default text-danger pull-right" %>
+      <% end %>
+    </h2>
+    <p class="date">Created at <%= local_time_ago forum_thread.created_at %> by <%= link_to forum_thread.user.name, "#"  %></p>
+  </div>
 </div>
+
+

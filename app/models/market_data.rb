@@ -24,14 +24,12 @@ class MarketData
         "Params": ["c"]
       }]
     }
-
     formatted_params = formatter(URI.encode(parameters.to_json))
-
     JSON.load(open("#{BASE_URL}/InteractiveChart/json?parameters=#{formatted_params}"))
   end
 
-
   private
+
   def self.formatter(string)
     substitutions = /,|\[|\]|:|{|}/
     string.gsub(substitutions,
