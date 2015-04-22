@@ -1,6 +1,7 @@
 class ForumThreadsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_forum_thread, except: [:index, :new, :create]
+  impressionist actions: [:show]
 
   def index
     @q = ForumThread.search(params[:q])

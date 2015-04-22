@@ -5,6 +5,12 @@
       <p><%= forum_thread.num_of_replies == 1 ? "Reply" : "Replies" %> </p>
     <% end %>
   </div>
+  <div class="replies" class="text-center">
+    <%= link_to forum_thread do %>
+      <p><%= forum_thread.impressionist_count(:filter=>:ip_address) %></p>
+      <p><%= forum_thread.impressionist_count(:filter=>:ip_address) == 1 ? "View" : "Views" %> </p>
+    <% end %>
+  </div>
   <div class="thread_list">
     <h2 class="title">
       <%= link_to forum_thread.subject, forum_thread %>
