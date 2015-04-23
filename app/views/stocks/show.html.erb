@@ -55,7 +55,18 @@
                 <td>Volume</td>
                 <td><%= @stock.quote.volume.to_i %></td>
               </tr>
-
+              <tr>
+                <td>Dividend Yield</td>
+                <td><%= number_to_percentage(@stock.quote.dividend_yield, precision: 2) %></td>
+              </tr>
+              <tr>
+                <td>Dividend Date</td>
+                <td><%= @stock.quote.ex_dividend_date %></td>
+              </tr>
+              <tr>
+                <td>Market Cap</td>
+                <td>$<%= @stock.quote.market_capitalization %></td>
+              </tr>
             </table>
           </div>
         </div>
