@@ -33,13 +33,10 @@
         });
         </script>
         <div class="row">
-          <div class="col col-sm-6">
-          <br><br>
-          
-
-            <table class="table">
+          <div class="col col-sm-3">
+            <table class="table table-striped">
               <tr>
-                <th>Twitter Sentimental Analysis</td>
+                <td>Twitter Sentimental Analysis</td>
                 <td>
                   <div class="progress">
                     <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= @stock.percentage[:positive].to_i %>%"></div>
@@ -48,43 +45,52 @@
                 </td>
               </tr>
               <tr>
-                <th>Previous Close</td>
+                <td>Previous Close</td>
                 <td><%= number_to_currency(@stock.quote.previous_close) %></td>
               </tr>
               <tr>
-                <th>Today's Open</td>
+                <td>Today's Open</td>
                 <td><%= number_to_currency(@stock.quote.open) %></td>
               </tr>
               <tr>
-                <th>Symbol</td>
-                <td><%= @stock.quote.symbol %></td>
+                <td>Days Range</td>
+                <td><%= @stock.quote.days_range %></td>
               </tr>
               <tr>
-                <th>PE Ratio</td>
+                <td>PE Ratio</td>
                 <td><%= @stock.quote.pe_ratio %></td>
               </tr>
               <tr>
-                <th>Volume</td>
+                <td>Volume</td>
                 <td><%= @stock.quote.volume.to_i %></td>
               </tr>
+            </table>
+          </div>
+          <div class="col col-sm-3">
+            <table class="table table-striped"> 
               <tr>
-                <th>Dividend Yield</td>
+                <td>Dividend Yield</td>
                 <td><%= number_to_percentage(@stock.quote.dividend_yield, precision: 2) %></td>
               </tr>
               <tr>
-                <th>Dividend Date</td>
+                <td>Dividend Date</td>
                 <td><%= @stock.quote.ex_dividend_date %></td>
               </tr>
               <tr>
-                <th>Market Cap</td>
+                <td>Market Cap</td>
                 <td>$<%= @stock.quote.market_capitalization %></td>
+              </tr>
+              <tr>
+                <td>EPS</td>
+                <td>$<%= @stock.quote.earnings_share %></td>
+              </tr>
+              <tr>
+                <td>Change</td>
+                <td><%= @stock.quote.change %> (<%= @stock.quote.changein_percent %>)</td>
               </tr>
             </table>
           </div>
         </div>
-
-
-
       </div>
     </div>
   </div>
