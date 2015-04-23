@@ -33,24 +33,37 @@
         });
         </script>
         <div class="row">
-         <div class="col col-sm-6">
-           <table class="table">
-             <tr>
-               <td>Symbol</td>
-               <td><%= @stock.quote.symbol %></td>
-             </tr>
-             <tr>
-               <td>PE Ratio</td>
-               <td><%= @stock.quote.pe_ratio %></td>
-             </tr>
-             
-             <p></p>
-           </table>
-         </div>
-       </div>
+          <div class="col col-sm-6">
+            <table class="table">
+              <tr>
+                <td>Symbol</td>
+                <td><%= @stock.quote.symbol %></td>
+              </tr>
+              <tr>
+                <td>PE Ratio</td>
+                <td><%= @stock.quote.pe_ratio %></td>
+              </tr>
+              <tr>
+                <td>Volume</td>
+                <td><%= @stock.quote.volume.to_i %></td>
+              </tr>
+              <tr>
+                <td>Today's Open</td>
+                <td><%= @stock.quote.open %></td>
+              </tr>
+              <tr>
+                <td>Previous Close</td>
+                <td><%= @stock.quote.previous_close %></td>
+              </tr>
+              
+              <p></p>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
   
   <div class="feed">
     <div role="tabpanel">

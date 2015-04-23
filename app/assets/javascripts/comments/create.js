@@ -1,0 +1,3 @@
+publisher = client.publish('/comments', {
+  message: '<%= j render @comment %>'
+});
