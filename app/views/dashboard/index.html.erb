@@ -26,19 +26,7 @@
             yAxis: {
               title: { text: 'Stock Price'}
             },
-            <% if @stock %>
-              series: [{
-                name: "<%= @stock.symbol %>",
-                pointInterval: <%= 1.day * 1000 %>,
-                pointStart: <%= 364.days.ago.to_i * 1000 %>,
-                data: <%= @stock.prices_with_weekend %>,
-                tooltip: {
-                  valueDecimals: 3
-                }
-              }]
-            <% else %>
-              series: <%= raw @series.to_json %>
-            <% end %>
+            series: <%= raw @series.to_json %>
           });
         });
         </script>
