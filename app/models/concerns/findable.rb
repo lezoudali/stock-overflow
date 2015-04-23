@@ -14,4 +14,5 @@ module Findable
       tweet
     end
   end
+
 end

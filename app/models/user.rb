@@ -3,10 +3,8 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  first_name             :string
-#  last_name              :string
 #  image                  :string
-#  email                  :string           default(""), not null
+#  email                  :string           default("")
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
@@ -20,13 +18,12 @@
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
-#  list_id                :integer
 #  deleted_at             :datetime
+#  full_name              :string
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
-#  index_users_on_list_id               (list_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
@@ -48,7 +45,7 @@ class User < ActiveRecord::Base
     if deleted_at?
       "Deleted User"
     else
-      "#{first_name} #{last_name}"
+      # "#{first_name} #{last_name}"
     end
   end
 

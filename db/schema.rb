@@ -79,10 +79,8 @@ ActiveRecord::Schema.define(version: 20150422182343) do
   add_index "user_stocks", ["user_id"], name: "index_user_stocks_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "image"
-    t.string   "email",                  default: "", null: false
+    t.string   "email",                  default: ""
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -96,12 +94,11 @@ ActiveRecord::Schema.define(version: 20150422182343) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
-    t.integer  "list_id"
     t.datetime "deleted_at"
+    t.string   "full_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["list_id"], name: "index_users_on_list_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
