@@ -33,8 +33,8 @@
         });
         </script>
         <div class="row">
-          <div class="col col-sm-6">
-            <table class="table">
+          <div class="col col-sm-3">
+            <table class="table table-striped">
               <tr>
                 <td>Previous Close</td>
                 <td><%= number_to_currency(@stock.quote.previous_close) %></td>
@@ -44,8 +44,8 @@
                 <td><%= number_to_currency(@stock.quote.open) %></td>
               </tr>
               <tr>
-                <td>Symbol</td>
-                <td><%= @stock.quote.symbol %></td>
+                <td>Days Range</td>
+                <td><%= @stock.quote.days_range %></td>
               </tr>
               <tr>
                 <td>PE Ratio</td>
@@ -55,6 +55,10 @@
                 <td>Volume</td>
                 <td><%= @stock.quote.volume.to_i %></td>
               </tr>
+            </table>
+          </div>
+          <div class="col col-sm-3">
+            <table class="table table-striped"> 
               <tr>
                 <td>Dividend Yield</td>
                 <td><%= number_to_percentage(@stock.quote.dividend_yield, precision: 2) %></td>
@@ -66,6 +70,14 @@
               <tr>
                 <td>Market Cap</td>
                 <td>$<%= @stock.quote.market_capitalization %></td>
+              </tr>
+              <tr>
+                <td>EPS</td>
+                <td>$<%= @stock.quote.earnings_share %></td>
+              </tr>
+              <tr>
+                <td>Change</td>
+                <td><%= @stock.quote.change %> (<%= @stock.quote.changein_percent %>)</td>
               </tr>
             </table>
           </div>
