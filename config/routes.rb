@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :show]
 
   resources :stocks, only: [:index, :update]
+  get 'stocks/:symbol', to: "stocks#show"
 
   resources :forum_threads do 
     resources :forum_posts, module: :forum_threads

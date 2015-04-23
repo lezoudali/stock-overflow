@@ -27,7 +27,7 @@
         </thead>
         <% @stocks.each do |stock| %>
           <tr>
-            <td><%= link_to stock.company, "/?symbol=#{stock.symbol}" %></td>
+            <td><%= link_to stock.company, stock %></td>
             <td><%= stock.symbol %></td>
             <td>$<%= stock.last_price %></td>
             <td>

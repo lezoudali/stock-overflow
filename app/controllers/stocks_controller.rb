@@ -17,4 +17,8 @@ class StocksController < ApplicationController
     end
     redirect_to :back
   end
+
+  def show 
+    @stock = Stock.find_by_symbol(params[:symbol].upcase)
+  end
 end
