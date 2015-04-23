@@ -5,7 +5,6 @@ class CallbacksController < Devise::OmniauthCallbacksController
         attributes = request.env["omniauth.auth"]
         @user.first_name ||= attributes[:info][:first_name]
         @user.last_name ||= attributes[:info][:last_name]
-        @user.email ||= attributes[:info][:email]
         @user.image ||= attributes[:info][:image]
         @user.save
       end
