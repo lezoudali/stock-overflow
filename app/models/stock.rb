@@ -30,6 +30,10 @@ class Stock < ActiveRecord::Base
     end
   end
 
+  def quote
+    StockQuote::Stock.quote(symbol)
+  end
+
   def prices_with_weekend(days=365)
     new_prices = prices(days).zip(dates(days).map{|d| Date.parse(d)})
     days.times do |i|

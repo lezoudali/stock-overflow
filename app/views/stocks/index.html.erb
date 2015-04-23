@@ -29,7 +29,7 @@
           <tr>
             <td><%= link_to stock.company, stock %></td>
             <td><%= stock.symbol %></td>
-            <td>$<%= stock.last_price %></td>
+            <td>$<%= stock.last_price.round(2) %></td>
             <td>
               <%= render_button_for(stock) %>
             </td>
