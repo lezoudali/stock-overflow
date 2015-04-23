@@ -31,10 +31,13 @@ cells.each_with_index do |cell, i|
   if i % 2 == 0
     stock = Stock.find_by(company: cells[i+1].text)
     price = StockQuote::Stock.quote(cells[i].text.gsub('.', '')).last_trade_price_only
-    if stock.nil?
+    if stock.nil?  
+      if !cells[i].text.include?(".")
       Stock.create(symbol: cells[i].text, company: cells[i+1].text, last_price: price)
+      end
     else
       stock.update_attributes(last_price: price)
     end
   end
+
 end
