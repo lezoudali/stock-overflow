@@ -34,7 +34,7 @@
         </script>
         <div class="row">
           <div class="col col-sm-3">
-            <table class="table table-striped">
+            <table class="table">
               <tr>
                 <td>Previous Close</td>
                 <td><%= number_to_currency(@stock.quote.previous_close) %></td>
@@ -58,7 +58,7 @@
             </table>
           </div>
           <div class="col col-sm-3">
-            <table class="table table-striped"> 
+            <table class="table"> 
               <tr>
                 <td>Dividend Yield</td>
                 <td><%= number_to_percentage(@stock.quote.dividend_yield, precision: 2) %></td>

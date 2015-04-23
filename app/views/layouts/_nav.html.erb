@@ -24,7 +24,7 @@
           <%= form_for stock do |f| %>
             <%= f.hidden_field :id %>
             <%= hidden_field_tag :follow, false %>
-            <%= f.submit :x, class: "btn btn-danger btn-xs" %>
+            <%= f.submit :x, class: "remove-stock glyphicon glyphicon-close" %>
           <% end %>
         </div>
       </li>
