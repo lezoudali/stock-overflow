@@ -36,6 +36,14 @@
           <div class="col col-sm-6">
             <table class="table">
               <tr>
+                <td>Previous Close</td>
+                <td><%= number_to_currency(@stock.quote.previous_close) %></td>
+              </tr>
+              <tr>
+                <td>Today's Open</td>
+                <td><%= number_to_currency(@stock.quote.open) %></td>
+              </tr>
+              <tr>
                 <td>Symbol</td>
                 <td><%= @stock.quote.symbol %></td>
               </tr>
@@ -47,16 +55,7 @@
                 <td>Volume</td>
                 <td><%= @stock.quote.volume.to_i %></td>
               </tr>
-              <tr>
-                <td>Today's Open</td>
-                <td><%= @stock.quote.open %></td>
-              </tr>
-              <tr>
-                <td>Previous Close</td>
-                <td><%= @stock.quote.previous_close %></td>
-              </tr>
-              
-              <p></p>
+
             </table>
           </div>
         </div>
