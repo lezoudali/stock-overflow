@@ -11,6 +11,8 @@
 #
 
 class Stock < ActiveRecord::Base
+  attr_accessor :positive, :negative
+  
   include Findable, SentimentAnalysis
   has_many :user_stocks
   has_many :users, through: :user_stocks

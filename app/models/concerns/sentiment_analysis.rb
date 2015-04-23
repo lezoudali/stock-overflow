@@ -1,36 +1,43 @@
 module SentimentAnalysis
-  @@positive = []
-  @@negative = []
 
-  def analyze
+  def get_ratings
     analyzer = SentimentLib::Analyzer.new
-    stock_tweets = self.find_tweets(100)
-    ratings = stock_tweets.map(&:text).collect{|text| analyzer.analyze(text)}
-    scaler(ratings)
+    stock_tweets = self.find_tweets(500)
+
+    stock_tweets.map(&:text).collect do |text| 
+      analyzer.analyze(text)
+    end
   end
 
-  def scaler(array)
-    array.each do |rating|
-      if rating >= 1
-        @@positive << rating
-      else rating <= -1
-        @@negative << rating
+  def scaler
+    @positive ||= []
+    @negative ||= []
+
+    rating = rating.to_i
+
+    get_ratings.each do |rating|
+      if rating == 1
+        @positive << rating
+      elsif rating > 1
+        @positive += [1]*rating
+      elsif rating == -1
+        @negative << rating
+      elsif rating < -1
+        @negative += [-1]*(rating*-1)
       end
     end
-    # binding.pry
+    
   end
 
-  def sum 
-    self.analyze
-   @@positive.count + @@negative.count
-   # binding.pry
+  def percentage
+    scaler
+    sum = @positive.count + @negative.count
+    pos = (@positive.count / sum.to_f) * 100
+    neg = (@negative.count / sum.to_f) * 100
+    {positive: pos, negative: neg}
   end
 
-  def positive_percentage
-    @@positive.count / sum * 100
-  end
-
-  def negative_percentage
-    @@negative.count / sum * 100
-  end
 end
+
+
+

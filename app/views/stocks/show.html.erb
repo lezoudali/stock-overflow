@@ -34,42 +34,57 @@
         </script>
         <div class="row">
           <div class="col col-sm-6">
+          <br><br>
+          
+
             <table class="table">
               <tr>
-                <td>Previous Close</td>
+                <th>Twitter Sentimental Analysis</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= @stock.percentage[:positive].to_i %>%"></div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= @stock.percentage[:negative].to_i %>%"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>Previous Close</td>
                 <td><%= number_to_currency(@stock.quote.previous_close) %></td>
               </tr>
               <tr>
-                <td>Today's Open</td>
+                <th>Today's Open</td>
                 <td><%= number_to_currency(@stock.quote.open) %></td>
               </tr>
               <tr>
-                <td>Symbol</td>
+                <th>Symbol</td>
                 <td><%= @stock.quote.symbol %></td>
               </tr>
               <tr>
-                <td>PE Ratio</td>
+                <th>PE Ratio</td>
                 <td><%= @stock.quote.pe_ratio %></td>
               </tr>
               <tr>
-                <td>Volume</td>
+                <th>Volume</td>
                 <td><%= @stock.quote.volume.to_i %></td>
               </tr>
               <tr>
-                <td>Dividend Yield</td>
+                <th>Dividend Yield</td>
                 <td><%= number_to_percentage(@stock.quote.dividend_yield, precision: 2) %></td>
               </tr>
               <tr>
-                <td>Dividend Date</td>
+                <th>Dividend Date</td>
                 <td><%= @stock.quote.ex_dividend_date %></td>
               </tr>
               <tr>
-                <td>Market Cap</td>
+                <th>Market Cap</td>
                 <td>$<%= @stock.quote.market_capitalization %></td>
               </tr>
             </table>
           </div>
         </div>
+
+
+
       </div>
     </div>
   </div>
@@ -107,15 +122,6 @@
 </div>
 
 
-
- <div class="progress">
-  <div class="progress-bar progress-bar-success" role="progressbar" style= "width:"<%=@stock.positive_percentage%>"%">
-    Positive
-  </div>
-  <div class="progress-bar progress-bar-danger" role="progressbar" style="width:"<%=@stock.negative_percentage%>"%">
-    Negative
-  </div>
-</div>
 
 
 
