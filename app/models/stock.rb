@@ -31,7 +31,7 @@ class Stock < ActiveRecord::Base
   end
 
   def quote
-    StockQuote::Stock.quote(symbol)
+    @quote ||=StockQuote::Stock.quote(symbol)
   end
 
   def prices_with_weekend(days=365)
