@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *=require font-awesome
+ *= require jquery-ui/draggable
+ *= require jquery-ui/sortable
  *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_tree .
  *= require_self

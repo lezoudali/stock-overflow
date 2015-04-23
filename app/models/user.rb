@@ -20,13 +20,11 @@
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
-#  list_id                :integer
 #  deleted_at             :datetime
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
-#  index_users_on_list_id               (list_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
