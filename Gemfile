@@ -88,3 +88,4 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'whenever', require: false
 gem 'stock_quote'
 gem 'impressionist'
+gem "font-awesome-rails"

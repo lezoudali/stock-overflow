@@ -1,4 +1,16 @@
 <%= div_for forum_post do %>
-  <p class="text-muted">Posted by <%= forum_post.user.name %> <%= local_time_ago forum_post.created_at %></p>
-  <p><%= markdownify forum_post.body %></p>
+  <h4>Re: <%= forum_post.forum_thread.subject %></h4>
+  <div class="row">
+    <div class="col col-md-10">
+      <%= markdownify forum_post.body %>
+    </div>
+    <div class="forum_post_user col col-md-2">
+      <%= image_tag forum_post.user.image, class: "profile-pic" %>
+      <p><%= link_to forum_post.user.name, "#" %></p>
+      <p class="text-muted"> <%= local_time_ago forum_post.created_at %></p><br>
+      <% if current_user == forum_post.user %>
+        <p><%= link_to fa_icon("trash-o"), [forum_post.forum_thread, forum_post], method: :delete, data: { confirm: "Are you sure you want to delete this post?" }, class: "btn btn-sm-default text-danger" %></p>
+      <% end %>
+    </div>
+  </div>
 <% end %>

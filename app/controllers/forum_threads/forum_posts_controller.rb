@@ -14,6 +14,12 @@ class ForumThreads::ForumPostsController < ApplicationController
     end
   end
 
+  def destroy
+    @forum_post = ForumPost.find(params[:id])
+    @forum_post.destroy
+    redirect_to @forum_thread
+  end
+
   private
 
   def set_forum_thread

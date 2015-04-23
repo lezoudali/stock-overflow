@@ -109,6 +109,8 @@ GEM
     ffi (1.9.8)
     figaro (1.1.0)
       thor (~> 0.14)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     gemoji (2.1.0)
     github-markdown (0.6.8)
@@ -383,6 +385,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   figaro
+  font-awesome-rails
   gemoji
   github-markdown
   google-analytics-rails

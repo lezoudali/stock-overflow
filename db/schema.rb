@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422175043) do
+ActiveRecord::Schema.define(version: 20150422182343) do
 
   create_table "forum_posts", force: :cascade do |t|
     t.integer  "forum_thread_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150422175043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.text     "content"
   end
 
   add_index "forum_threads", ["user_id"], name: "index_forum_threads_on_user_id"

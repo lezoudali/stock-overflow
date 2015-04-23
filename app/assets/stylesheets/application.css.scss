@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *=require font-awesome
  *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_tree .
  *= require_self
@@ -55,9 +56,22 @@ p {
 
 
 .forum_post {
-  border-top: 1px solid #ccc;
-  padding: 8px 0px;
-
+  background: #E1EBF2;
+  line-height: 1.5em;
+  padding: 5px 5px 10px 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  .forum_post_user {
+    border-left: 1px solid white;
+  }
+  p {
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0;
+  }
+  img {
+    margin-bottom: 3px;
+  }
   ul {
     padding-left: 15px;
   }
@@ -147,6 +161,60 @@ p {
   border-radius: 0px;
 }
 
+.thread_show {
+  background: #E1EBF2;
+  line-height: 1.5em;
+  padding: 15px;
+  border-radius: 5px;
+  .thread_title {
+    border-bottom: 1px dashed #68636B;
+    margin-bottom: 10px;
+    p {
+      font-size: 0.8em;
+    }
+  }
+  h1 {
+    margin-bottom: 0px;
+    margin-top: 0;
+    padding-bottom: 5px;
+  }
+}
+
+
+
+/* form_post form */
+
+form {
+    span:before {
+      content: "";
+      border-style: solid;
+      border-width: 0 15px 15px 15px;
+      border-color:  transparent transparent rgba(0,102,255,.5) transparent;
+      height: 0;
+      position: absolute;
+      top: -17px;
+      width: 0;
+  }
+
+    span {
+      background-color: rgba(0,102,255,.15);
+      border: 2px solid rgba(0,102,255,.5);
+      border-radius: 10px;
+      color: #000;
+      display: none;
+      padding: 10px;
+      position: relative;
+    }
+
+    .form_post_field {
+      display: block
+    }
+
+    .form_post_field:hover + span {
+      display: inline-block;
+      margin: 10px 0 0 45rem;
+    }
+}
 
 
 
