@@ -89,4 +89,6 @@ gem 'whenever', require: false
 gem 'stock_quote'
 gem 'impressionist'
 gem "font-awesome-rails"
+gem 'sentiment_lib'
 gem 'jquery-ui-rails'
+

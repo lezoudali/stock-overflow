@@ -11,7 +11,7 @@
 #
 
 class Stock < ActiveRecord::Base
-  include Findable
+  include Findable, SentimentAnalysis
   has_many :user_stocks
   has_many :users, through: :user_stocks
 
@@ -45,4 +45,8 @@ class Stock < ActiveRecord::Base
     end
     new_prices.map(&:first)
   end
+
+  def predictions
+  end
 end
+
