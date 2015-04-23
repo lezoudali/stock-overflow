@@ -36,6 +36,15 @@
     padding: 10px 0;
     box-shadow: -1px 0 3px #000;
   }
+
+  #stock-list li {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #333;
+    border-bottom: 1px solid #2D2D2D;
+    border-top: 1px solid #2D2D2D;
+  }
 }
 
 .twitter {
