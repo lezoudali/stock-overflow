@@ -3,8 +3,10 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
 #  image                  :string
-#  email                  :string           default("")
+#  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
@@ -19,7 +21,6 @@
 #  provider               :string
 #  uid                    :string
 #  deleted_at             :datetime
-#  full_name              :string
 #
 # Indexes
 #

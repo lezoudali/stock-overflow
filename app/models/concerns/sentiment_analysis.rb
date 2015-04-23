@@ -20,5 +20,4 @@ module SentimentAnalysis
       end
     end
   end
-  binding.pry
 end
