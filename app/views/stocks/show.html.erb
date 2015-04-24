@@ -109,14 +109,20 @@
   <div class="feed">
     <div role="tabpanel">
       <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#tweets" aria-controls="tweets" role="tab" data-toggle="tab">Tweets</a></li>
+      <ul class="nav nav-justified nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">Chat</a></li>
+        <li role="presentation"><a href="#tweets" aria-controls="tweets" role="tab" data-toggle="tab">Tweets</a></li>
         <li role="presentation"><a href="#articles" aria-controls="articles" role="tab" data-toggle="tab">Articles</a></li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="tweets">
+        <div role="tabpanel" class="tab-pane active" id="chat">
+          <ul>
+            
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tweets">
           <ul>
             <% if @stock %>
               <% @stock.find_tweets.each do |tweet| %>
@@ -136,39 +142,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
