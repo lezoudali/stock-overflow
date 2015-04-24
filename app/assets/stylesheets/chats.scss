@@ -1,3 +1,10 @@
 // Place all the styles related to the chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_message_form input[type="text"] {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 16.6667%;
+}
