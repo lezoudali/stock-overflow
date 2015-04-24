@@ -34,12 +34,10 @@
 
 <div class="chat_container">
   <div id="chat_room">
-    <center><h4 class="alert"> <%= @stock.company %></h4></center>
     <%= render 'messages' %>
   </div>
  
   <form id="new_message_form">
     <input type="text" id="message" name="message">
-    <input type="submit" value="Send">
   </form>
 </div>

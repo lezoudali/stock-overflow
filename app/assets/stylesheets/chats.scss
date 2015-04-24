@@ -7,4 +7,19 @@
   bottom: 0;
   right: 0;
   width: 16.6667%;
+  padding: 5px;
+  font-size: 1.5rem;
+}
+
+.nav-tab-holder {
+  position: fixed;
+  background: rgba(221, 221, 221, 0.9);
+  top: 0;
+  right: 0;
+  width: 16.6667%;
+  border-bottom: 1px solid #D0D0D0;
+
+  h4 {
+    margin: 0;
+  }
 }
