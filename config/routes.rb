@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get  '/chatroom' => 'chats#room', :as => :chat
+
   get 'users/show'
 
   get 'users/update'
@@ -16,5 +18,7 @@ Rails.application.routes.draw do
   resources :forum_threads do 
     resources :forum_posts, module: :forum_threads
   end
+
+  resources :messages, only: [:create]
 
 end

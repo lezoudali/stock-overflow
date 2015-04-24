@@ -1,0 +1,45 @@
+<script>
+  $(function() {
+    // Create a new client to connect to Faye
+    var client = new Faye.Client('http://localhost:9292/faye');
+ 
+    // Subscribe to the public channel
+    var public_subscription = client.subscribe('/messages/public_<%= @stock.id %>', function(data) {
+      $('<p></p>').html(data.username + ": " + data.msg).appendTo('#chat_room');
+    });
+ 
+    // Handle form submission to publish messages.
+    $('#new_message_form').submit(function(){
+      client.publish('/messages/public_<%= @stock.id %>', {
+        username: '<%= current_user.name %>',
+        msg: $('#message').val()
+      });
+ 
+    $.ajax({
+      method: "POST",
+      url: "/messages",
+      data: { "message[user_id]":'<%= current_user.id %>' , "message[stock_id]":'<%= @stock.id %>', "message[content]": $('#message').val() }
+      })
+      .done(function( content ) {
+      alert( "Data Saved: " + content );
+      });
+
+      $('#message').val('');
+
+      return false;
+    });
+  });
+</script>
+
+
+<div class="chat_container">
+  <div id="chat_room">
+    <center><h4 class="alert"> <%= @stock.company %></h4></center>
+    <%= render 'messages' %>
+  </div>
+ 
+  <form id="new_message_form">
+    <input type="text" id="message" name="message">
+    <input type="submit" value="Send">
+  </form>
+</div>
