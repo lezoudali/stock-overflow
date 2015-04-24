@@ -1,12 +1,21 @@
+require 'open-uri'
 module Findable
   def times_base_uri
     "http://api.nytimes.com/svc/search/v2/articlesearch"
   end
 
   def find_articles
-    uri = URI.parse("#{times_base_uri}.json?q=#{company}&sort=newest&fq=news_desk:(business)&fl=web_url,snippet&begin_date=20130601&api-key=#{ENV['TIMES_ARTICLE_KEY']}")
-    resp = JSON Net::HTTP.get(uri)
-    resp['response']['docs']
+
+    headlines_doc = Nokogiri::HTML(open("http://finance.yahoo.com/q/h?s=#{symbol}+HEADLINES"))
+    headlines_doc.search("#yfncsumtab li").collect do |article|  
+      {
+        "snippet" => article.search("a").first.text,
+        "web_url" => article.children.first.attribute("href").value.split("*").last,
+        "journal" => article.children.last.text
+
+      }    
+    end
+
   end
 
   def find_tweets(n = 5)
