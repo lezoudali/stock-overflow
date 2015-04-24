@@ -33,10 +33,12 @@
         });
         </script>
         <div class="row">
-          <div class="col col-sm-3">
+          <div class="col col-sm-12">
             <table class="table">
               <tr>
                 <td>Twitter Sentimental Analysis</td>
+              </tr>
+              <tr>
                 <td>
                   <div class="progress">
                     <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= @stock.percentage[:positive].to_i %>%"></div>
@@ -44,6 +46,14 @@
                   </div>
                 </td>
               </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-sm-6">
+            <table class="table">
+              
               <tr>
                 <td>Previous Close</td>
                 <td><%= number_to_currency(@stock.quote.previous_close) %></td>
@@ -66,7 +76,7 @@
               </tr>
             </table>
           </div>
-          <div class="col col-sm-3">
+          <div class="col col-sm-6">
             <table class="table"> 
               <tr>
                 <td>Dividend Yield</td>

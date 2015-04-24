@@ -9,7 +9,7 @@
       <%= link_to('', edit_user_path(current_user), class: "glyphicon glyphicon-user") %>
     </div>
   </div>
-  <%= form_tag "/", method: "get" do %>
+  <%= form_tag "/stocks", method: "get" do %>
     <%= text_field_tag :symbol, "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)" %><br>
   <% end %>
   <%= link_to "view all stocks", stocks_path %><br>
