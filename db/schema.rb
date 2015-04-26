@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422182343) do
+ActiveRecord::Schema.define(version: 20150424152205) do
 
   create_table "forum_posts", force: :cascade do |t|
     t.integer  "forum_thread_id"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20150422182343) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "stock_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "content"
+  end
 
   create_table "stocks", force: :cascade do |t|
     t.string   "symbol"

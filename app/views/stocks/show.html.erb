@@ -32,6 +32,7 @@
           });
         });
         </script>
+        <br>
         <div class="row">
           <div class="col col-sm-12">
             <table class="table">
@@ -41,15 +42,14 @@
               <tr>
                 <td>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= @stock.percentage[:positive] %>%"></div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= @stock.percentage[:negative] %>%"></div>
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%#= @stock.percentage[:positive] %>%"></div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%#= @stock.percentage[:negative] %>%"></div>
                   </div>
                 </td>
               </tr>
             </table>
           </div>
         </div>
-
         <div class="row">
           <div class="col col-sm-6">
             <table class="table">
@@ -109,20 +109,29 @@
   <div class="feed">
     <div role="tabpanel">
       <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#tweets" aria-controls="tweets" role="tab" data-toggle="tab">Tweets</a></li>
-        <li role="presentation"><a href="#articles" aria-controls="articles" role="tab" data-toggle="tab">Articles</a></li>
-      </ul>
+      <div class="nav-tab-holder">
+        <ul class="nav nav-justified nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">Chat</a></li>
+          <li role="presentation"><a href="#tweets" aria-controls="tweets" role="tab" data-toggle="tab">Tweets</a></li>
+          <li role="presentation"><a href="#articles" aria-controls="articles" role="tab" data-toggle="tab">Articles</a></li>
+        </ul>
+        <center><h4 class="alert"> <%= @stock.company %></h4></center>
+      </div>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="tweets">
+        <div role="tabpanel" class="tab-pane active" id="chat">
           <ul>
-            <% if @stock %>
-              <% @stock.find_tweets.each do |tweet| %>
-                <li><%= link_to tweet.text, tweet.url.to_s %></li>
-              <% end %>
-            <% end %>
+            <%= render 'chatroom' %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tweets">
+          <ul>
+            <%# if @stock %>
+              <%# @stock.find_tweets.each do |tweet| %>
+                <li><%#= link_to tweet.text, tweet.url.to_s %></li>
+              <%# end %>
+            <%# end %>
           </ul>
         </div>
         <div role="tabpanel" class="tab-pane" id="articles">
@@ -136,39 +145,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
