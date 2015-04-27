@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
   
   has_many :messages
   has_many :user_stocks
+  has_many :favorites
+  has_many :favorite_stocks, through: :favorites, source: :stock
   has_many :stocks, through: :user_stocks
   has_many :forum_threads, dependent: :destroy
   has_many :forum_posts, dependent: :destroy
@@ -76,5 +78,8 @@ class User < ActiveRecord::Base
     articles.flatten
   end
 
-
+  def stocks_without_favorites
+    stocks - favorite_stocks
+  end
+  
 end

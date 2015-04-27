@@ -35,15 +35,16 @@
     background: rgb(36, 35, 35);
     padding: 10px 0;
     box-shadow: -1px 0 3px #000;
+    z-index: 102;
   }
 
-  #stock-list {
+  #stock-list, #favorite-stocks {
     li {
       display: block;
       padding-top: 10px;
       padding-bottom: 10px;
-      background-color: #282828;
-      border-top: 1px solid #2D2D2D;
+      /* background-color: #282828; */
+      /* border-top: 1px solid #2D2D2D; */
 
       .remove-stock {
         display: none;
@@ -60,6 +61,13 @@
 
     li.ui-sortable-helper {
       border-bottom: 1px solid #2D2D2D;
+    }
+  }
+
+  #favorite-stocks {
+    li {
+      background-color: #282828;
+      border-top: 1px solid #2D2D2D;
     }
   }
 }

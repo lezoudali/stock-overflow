@@ -65,7 +65,6 @@ class Stock < ActiveRecord::Base
     save
   end
 
-  def predictions
-  end
+
 end
 

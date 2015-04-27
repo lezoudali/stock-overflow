@@ -1,11 +1,16 @@
 <script>
   $(function() {
+    //Scroll to bottom of chat
+    $('#feed').scrollTop($('#feed')[0].scrollHeight);
+
     // Create a new client to connect to Faye
     var client = new Faye.Client('http://localhost:9292/faye');
  
     // Subscribe to the public channel
     var public_subscription = client.subscribe('/messages/public_<%= @stock.id %>', function(data) {
       $('<p></p>').html(data.username + ": " + data.msg).appendTo('#chat_room');
+      $('#feed').scrollTop($('#feed')[0].scrollHeight);
+      // alert($('#feed')[0].scrollHeight)
     });
  
     // Handle form submission to publish messages.
