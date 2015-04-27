@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: stocks
+#
+#  id         :integer          not null, primary key
+#  symbol     :string
+#  company    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  last_price :float
+#
+
 class Stock < ActiveRecord::Base
   attr_accessor :positive, :negative
   
@@ -40,7 +52,5 @@ class Stock < ActiveRecord::Base
     new_prices.map(&:first)
   end
 
-  def predictions
-  end
 end
 

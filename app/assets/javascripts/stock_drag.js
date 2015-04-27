@@ -16,8 +16,22 @@ $(function(){
 
   $("#favorite-stocks").on( "sortreceive", function( event, ui ) {
     if(draggedFromStocks) {
-      $("#favorite-stocks li").last().remove();
+      if($("#favorite-stocks").children().length == 6) {
+        $("#favorite-stocks li").last().appendTo("#stock-list");
+      }
+
+      ids = $("#favorite-stocks li").map(function(i, element, arr) {
+        return element.dataset.id
+      }).toArray();
+
+      $.ajax({
+        url: "/favorites/update",
+        method: "POST",
+        data: { ids: ids},
+        dataType: "json"
+      });
     }
+
     draggedFromStocks = false;
   });
 });
