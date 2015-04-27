@@ -2,9 +2,8 @@ module SentimentAnalysis
 
   def get_ratings
     analyzer = SentimentLib::Analyzer.new
-    stock_tweets = self.find_tweets(500)
 
-    stock_tweets.map(&:text).collect do |text| 
+    tweets.map(&:text).collect do |text| 
       analyzer.analyze(text)
     end
   end

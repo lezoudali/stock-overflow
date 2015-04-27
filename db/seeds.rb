@@ -24,20 +24,33 @@
 require "nokogiri"
 require "open-uri"
 
+
 html = File.read(open("http://en.wikipedia.org/wiki/List_of_S%26P_500_companies"))
 noko = Nokogiri::HTML(html)
 cells = noko.css("h2+table td:first-child a, h2+table td:nth-child(2) a")
 cells.each_with_index do |cell, i|
-  if i % 2 == 0
-    stock = Stock.find_by(company: cells[i+1].text)
-    price = StockQuote::Stock.quote(cells[i].text.gsub('.', '')).last_trade_price_only
-    if stock.nil?  
-      if !cells[i].text.include?(".")
-      Stock.create(symbol: cells[i].text, company: cells[i+1].text, last_price: price)
-      end
-    else
-      stock.update_attributes(last_price: price)
+  if (i % 2).zero?
+    symbol = cells[i].text 
+    if !symbol.include?(".")
+      company_name = cells[i+1].text
+      stock = Stock.find_or_initialize_by(symbol: symbol)
+      stock.company = company_name if stock.new_record?
+      stock.save 
     end
   end
-
 end
+
+
+loop do 
+  Stock.all.each do |stock|
+    stock.last_price = StockQuote::Stock.quote(stock.symbol).last_trade_price_only
+    stock.get_tweets
+    sleep(10)
+  end
+end
+
+
+
+
+
+

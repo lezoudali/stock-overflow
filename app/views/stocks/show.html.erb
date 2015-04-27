@@ -42,8 +42,8 @@
               <tr>
                 <td>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%#= @stock.percentage[:positive] %>%"></div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%#= @stock.percentage[:negative] %>%"></div>
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= @stock.percentage[:positive] %>%"></div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= @stock.percentage[:negative] %>%"></div>
                   </div>
                 </td>
               </tr>
@@ -127,11 +127,11 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="tweets">
           <ul>
-            <%# if @stock %>
-              <%# @stock.find_tweets.each do |tweet| %>
-                <li><%#= link_to tweet.text, tweet.url.to_s %></li>
-              <%# end %>
-            <%# end %>
+            <% if @stock %>
+              <% @stock.tweets.last(20).each do |tweet| %>
+                <li><%= link_to tweet.text, tweet.url.to_s %></li>
+              <% end %>
+            <% end %>
           </ul>
         </div>
         <div role="tabpanel" class="tab-pane" id="articles">
