@@ -6,6 +6,7 @@
     // Subscribe to the public channel
     var public_subscription = client.subscribe('/messages/public_<%= @stock.id %>', function(data) {
       $('<p></p>').html(data.username + ": " + data.msg).appendTo('#chat_room');
+      $('#feed').scrollTop($('#feed').scrollHeight());
     });
  
     // Handle form submission to publish messages.
