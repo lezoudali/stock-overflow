@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: stocks
-#
-#  id         :integer          not null, primary key
-#  symbol     :string
-#  company    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  last_price :float
-#
-
 class Stock < ActiveRecord::Base
   attr_accessor :positive, :negative
   
@@ -41,8 +29,11 @@ class Stock < ActiveRecord::Base
     new_prices = prices(days).zip(dates(days).map{|d| Date.parse(d)})
     days.times do |i|
       if i < days - 1
+        begin
         unless new_prices[i][1] + 1 == new_prices[i+1][1]
           new_prices.insert(i+1 ,[new_prices[i][0], new_prices[i][1] + 1])
+        end
+        rescue
         end
       end
     end
