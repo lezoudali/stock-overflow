@@ -7,13 +7,16 @@
       <div><%= link_to current_user.name, root_path %></div>
       <%= link_to('', destroy_user_session_path, :method => :delete, class: "glyphicon glyphicon-log-out") %>
       <%= link_to('', edit_user_path(current_user), class: "glyphicon glyphicon-user") %>
+      <div class="row">
+        <%= link_to "view all stocks", stocks_path %> 
+        <span class="pipe">|</span>
+        <%= link_to "forum", forum_threads_path %>
+      </div>
     </div>
   </div>
   <%= form_tag "/stocks", method: "get" do %>
     <%= text_field_tag :symbol, "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)" %><br>
   <% end %>
-  <%= link_to "view all stocks", stocks_path %><br>
-  <%= link_to "forum", forum_threads_path %><br>
 
   <h3><i class="glyphicon glyphicon-star"></i>Favorite Stocks</h3>
   <p class="text-center">Drag to add stock to favorites</p>
