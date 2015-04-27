@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   def get_stocks_tweets
     tweets = []
     self.stocks.first(5).each do |stock|
-      tweets << stock.find_tweets
+      tweets << stock.tweets
     end
     tweets.flatten
   end

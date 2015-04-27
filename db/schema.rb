@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20150427173615) do
     t.float    "last_price"
   end
 
+  create_table "tweets", force: :cascade do |t|
+    t.string   "text"
+    t.string   "url"
+    t.integer  "stock_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tweets", ["stock_id"], name: "index_tweets_on_stock_id"
+
   create_table "user_stocks", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "stock_id"
