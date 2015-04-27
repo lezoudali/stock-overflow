@@ -15,6 +15,9 @@
   <%= link_to "view all stocks", stocks_path %><br>
   <%= link_to "forum", forum_threads_path %><br>
 
+  <h3><i class="glyphicon glyphicon-star"></i>Favorite Stocks</h3>
+  <p class="text-center">Drag to add stock to favorites</p>
+
   <ul id="favorite-stocks" class="favorite-stocks">
     <% current_user.favorite_stocks.each do |stock| %>
       <li class='row' data-id="<%= stock.id %>">
