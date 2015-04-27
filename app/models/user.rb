@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
   
   has_many :messages
   has_many :user_stocks
+  has_many :favorites
+  has_many :favorite_stocks, through: :favorites, source: :stock
   has_many :stocks, through: :user_stocks
   has_many :forum_threads, dependent: :destroy
   has_many :forum_posts, dependent: :destroy
@@ -63,7 +65,7 @@ class User < ActiveRecord::Base
   def get_stocks_tweets
     tweets = []
     self.stocks.first(5).each do |stock|
-      tweets << stock.find_tweets
+      tweets << stock.tweets
     end
     tweets.flatten
   end
@@ -76,5 +78,8 @@ class User < ActiveRecord::Base
     articles.flatten
   end
 
-
+  def stocks_without_favorites
+    stocks - favorite_stocks
+  end
+  
 end
