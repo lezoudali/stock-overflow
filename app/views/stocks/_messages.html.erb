@@ -1,3 +1,3 @@
 <% @stock.messages.order("created_at ASC").each do |msg| %>
-  <p><%= msg.user.name %>: <%= msg.content %></p>
+  <p><strong><%= msg.user.name %></strong>: <%= msg.content %></p>
 <% end %>
