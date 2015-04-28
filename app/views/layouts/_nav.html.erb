@@ -16,7 +16,7 @@
   </div>
 
   <%= form_tag "/stocks", method: "get" do %>
-    <%= text_field_tag "q[company_or_symbol_cont]", "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)", id:"stock-search" %>
+    <%= text_field_tag "q[company_or_symbol_cont]", "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)", id:"stock-search", autocomplete: "off" %>
     <div class='result-dropdown' id='result-dropdown'>
       <ul>
       
