@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
+  get '/search/query'
+
 end
