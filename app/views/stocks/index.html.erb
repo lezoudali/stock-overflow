@@ -1,44 +1,36 @@
 <div>
   <%= render "layouts/nav" %>
   <div class="container">
-    <div class="col-sm-offset-2 col-sm-6" >
+    <div class="col-sm-offset-2 col-sm-9" >
 
       <% if flash[:success] %>
         <div class="alert alert-success text-center" role="alert"><%= flash[:success] %></div>
       <% end %>
       <br>
-      <%= search_form_for @search do |f| %>
-        <div class="input-group">
-          <%= f.search_field :company_or_symbol_cont, class: "form-control", placeholder: 'Company name or symbol contains' %>
-          <div class="input-group-btn">               
-            <%= button_tag(type: 'submit', class: "btn btn-default") do %>
-              <%= content_tag(:i,"", class: "glyphicon glyphicon-search") %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+
       <br>
-      <table class="table">
+      <table class="table" id="stock_lists">
+
         <thead>
-          <th><%= sort_link @search, :company, "Company" %></th>
-          <th><%= sort_link @search, :symbol,  "Symbol" %></th>
-          <th><%= sort_link @search, :last_price, "Last Price" %></th>
+          <th>Company</th>
+          <th>Symbol</th>
+          <th>Last Price</th>
           <th></th>
         </thead>
+
+        <tbody>
+
         <% @stocks.each do |stock| %>
-          <tr>
+          <tr class="<%= cycle("odd", "even")%>">
             <td><%= link_to stock.company, "stocks/#{stock.symbol}" %></td>
             <td><%= stock.symbol %></td>
             <td><%= number_to_currency(stock.last_price) %></td>
-            <td>
-              <%= render_button_for(stock) %>
-            </td>
+            <td><%= render_button_for(stock) %></td>
           </tr>
-        <% end %> 
+          <% end %> 
+        </tbody>
       </table>
-      <div class="text-center">
-        <%= will_paginate @stocks %>
-      </div>
+
     </div>
   </div> 
 </div>

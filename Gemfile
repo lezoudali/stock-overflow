@@ -38,23 +38,26 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :assets do
+  gem 'jquery-ui-rails'
+end
+
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
 gem 'figaro'
 gem 'airbrake'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'chartkick'
 gem 'awesome_print'
 gem 'json'
-gem 'cancan'
 gem 'twitter'
 gem "sucker_punch"
 gem "ransack"
 gem "local_time"
 gem "html-pipeline"
 gem "github-markdown"
-gem "gemoji"
 gem "sanitize"
 gem "paranoia"
 gem "highstock-rails"
