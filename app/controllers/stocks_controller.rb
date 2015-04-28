@@ -8,7 +8,7 @@ class StocksController < ApplicationController
   end
 
   def update
-    stock = Stock.find_by_id(params[:stock][:id])
+    stock = Stock.find_by_id(params[:id])
     if params[:follow] == "true"
       stock.users << current_user unless stock.users.include?(current_user)
       flash[:success] = "You are now following #{stock.company}"

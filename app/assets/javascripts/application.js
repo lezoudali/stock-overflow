@@ -12,13 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require highstock
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require jquery-ui/draggable
 //= require jquery-ui/sortable
 //= require bootstrap
-//= require turbolinks
-//= require highstock
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require local_time
 //= require_tree .

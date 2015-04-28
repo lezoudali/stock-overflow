@@ -34,11 +34,8 @@
           <%= link_to "#{stock.company} (#{stock.symbol})", "#{stocks_path}/#{stock.symbol}" %>
         </div>
         <div class="col-md-1">
-          <%= form_for stock do |f| %>
-            <%= f.hidden_field :id %>
-            <%= hidden_field_tag :follow, false %>
-            <%= f.submit :x, class: "remove-stock glyphicon glyphicon-close" %>
-          <% end %>
+
+        <%= link_to fa_icon("times"), stock_path(stock, follow: false), method: :patch, data: { confirm: "Are you sure you want to remove this stock?" }, class: "remove-stock text-danger pull-right" %>
         </div>
       </li>
     <% end %>
@@ -51,11 +48,7 @@
           <%= link_to "#{stock.company} (#{stock.symbol})", "#{stocks_path}/#{stock.symbol}" %>
         </div>
         <div class="col-md-1">
-          <%= form_for stock do |f| %>
-            <%= f.hidden_field :id %>
-            <%= hidden_field_tag :follow, false %>
-            <%= f.submit :x, class: "remove-stock glyphicon glyphicon-close" %>
-          <% end %>
+          <%= link_to fa_icon("times"), stock_path(stock, follow: false), method: :patch, data: { confirm: "Are you sure you want to remove this stock?" }, class: "remove-stock text-danger pull-right" %>
         </div>
       </li>
     <% end %>
