@@ -14,8 +14,14 @@
       </div>
     </div>
   </div>
+
   <%= form_tag "/stocks", method: "get" do %>
-    <%= text_field_tag "q[company_or_symbol_cont]", "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)" %><br>
+    <%= text_field_tag "q[company_or_symbol_cont]", "", class: "form-control", placeholder: "Stock Symbol e.g.(AAPL)", id:"stock-search" %>
+    <div class='result-dropdown' id='result-dropdown'>
+      <ul>
+      
+      </ul>
+    </div><br>
   <% end %>
 
   <h3><i class="glyphicon glyphicon-star"></i>Favorite Stocks</h3>
