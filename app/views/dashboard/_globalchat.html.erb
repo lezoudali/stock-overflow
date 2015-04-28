@@ -1,0 +1,47 @@
+<script>
+  $(function() {
+    //Scroll to bottom of chat
+    $('#feed').scrollTop($('#feed')[0].scrollHeight);
+
+    // Create a new client to connect to Faye
+    var client = new Faye.Client('http://localhost:9292/faye');
+ 
+    // Subscribe to the public channel
+    var public_subscription = client.subscribe('/messages/public', function(data) {
+      $('<p></p>').html(data.username + ": " + data.msg).appendTo('#chat_room');
+      $('#feed').scrollTop($('#feed')[0].scrollHeight);
+      // alert($('#feed')[0].scrollHeight)
+    });
+ 
+    // Handle form submission to publish messages.
+    $('#new_message_form').submit(function(){
+      client.publish('/messages/public', {
+        username: '<%= current_user.name %>',
+        msg: $('#message').val()
+      });
+ 
+    $.ajax({
+      method: "POST",
+      url: "/messages",
+      data: { "message[user_id]":'<%= current_user.id %>' , "message[content]": $('#message').val() }
+      })
+      .done(function( content ) {
+      alert( "Data Saved: " + content );
+      });
+
+      $('#message').val('');
+
+      return false;
+    });
+  });
+</script>
+
+
+<div class="chat_container">
+  <div id="chat_room">
+    <%= render 'messages' %>
+  </div>
+  <form id="new_message_form">
+    <input type="text" id="message" name="message">
+  </form>
+</div>
