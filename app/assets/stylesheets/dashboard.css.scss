@@ -16,6 +16,10 @@
   background: #3C3C3C;
 }
 
+.middle.col {
+  padding: 0;
+}
+
 .side-nav.container {
   position: fixed;
   top: 0;
@@ -79,7 +83,7 @@
   }
 
   h3 {
-    color: #9EB4BA;
+    color: #7F7F7F;
     margin-top: 0;
   }
 
