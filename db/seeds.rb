@@ -12,19 +12,12 @@ cells.each_with_index do |cell, i|
       company_name = cells[i+1].text
       stock = Stock.find_or_initialize_by(symbol: symbol)
       stock.company = company_name if stock.new_record?
+      stock.last_price = StockQuote::Stock.quote(stock.symbol).last_trade_price_only
       stock.save 
     end
   end
 end
 
-
-loop do 
-  Stock.all.each do |stock|
-    stock.last_price = StockQuote::Stock.quote(stock.symbol).last_trade_price_only
-    stock.get_tweets
-    sleep(10)
-  end
-end
 
 
 

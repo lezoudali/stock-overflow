@@ -35,7 +35,7 @@ class Stock < ActiveRecord::Base
   end
 
   def quote
-    @quote ||=StockQuote::Stock.quote(symbol)
+    @quote ||= StockQuote::Stock.quote(symbol)
   end
 
   def prices_with_weekend(days=365)
@@ -53,7 +53,7 @@ class Stock < ActiveRecord::Base
     new_prices.map(&:first)
   end
 
-  def get_tweets(n = 500)
+  def get_tweets(n = 100)
     $twitter_client.search("$#{symbol}", result_type: "recent", lang: "en").take(n).collect do |tweet|
       found_tweet = Tweet.find_by(url: tweet.url.to_s)
       if found_tweet.nil?
@@ -64,7 +64,5 @@ class Stock < ActiveRecord::Base
     end
     save
   end
-
-
 end
 
