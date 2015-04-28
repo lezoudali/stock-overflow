@@ -36,6 +36,10 @@
     padding: 10px 0;
     box-shadow: -1px 0 3px #000;
     z-index: 102;
+
+    .pipe {
+      color: #E5E5E5;
+    }
   }
 
   #stock-list, #favorite-stocks {
@@ -65,10 +69,22 @@
   }
 
   #favorite-stocks {
+    min-height: 20px;
+    background-color: #282828;
+
     li {
       background-color: #282828;
       border-top: 1px solid #2D2D2D;
     }
+  }
+
+  h3 {
+    color: #9EB4BA;
+    margin-top: 0;
+  }
+
+  .glyphicon-star {
+    color: yellow;
   }
 }
 
@@ -79,4 +95,8 @@
 .orders-chart {
   height: 500px;
   border-bottom: 1px solid #aaa;
+}
+
+.follow-button {
+  float: right
 }
