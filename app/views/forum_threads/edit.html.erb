@@ -1,13 +1,9 @@
-<div>
-  <%= render "layouts/nav" %>
-    <div class="container">
-      <div class="col-sm-offset-2 col-sm-10" >
-        <h1>Editing forum_thread</h1>
+<div class="col-sm-offset-2 col-sm-10" >
+  <h1>Editing forum_thread</h1>
 
-        <%= render 'form' %>
+  <%= render 'form' %>
 
-        <%= link_to 'Show', @forum_thread %> |
-        <%= link_to 'Back', forum_threads_path %>
-      </div>
-    </div>
+  <%= link_to 'Show', @forum_thread %> |
+  <%= link_to 'Back', forum_threads_path %>
 </div>
+

@@ -1,19 +1,15 @@
-<div>  
-  <%= render "layouts/nav" %>
-  <div class="container">
-    <div class="col-sm-offset-2 col-sm-10" >
-      <br>
-      <div class="thread_show">
-        <div class="thread_title">
-          <h1><%= @forum_thread.subject %></h1>
-          <p>by <%= link_to @forum_thread.user.first_name, "#" %> » <%= local_time(@forum_thread.created_at) %></p>
-        </div>
-        <p><%= @forum_thread.content %></p>
-      </div>
-      <br> 
-      <%= render @forum_thread.forum_posts %><br>
-      <h4><%= fa_icon "reply", text: "Reply" %></h4><br>
-      <%= render partial: "forum_posts/form" %>
+<div class="col-sm-offset-2 col-sm-10" >
+  <br>
+  <div class="thread_show">
+    <div class="thread_title">
+      <h1><%= @forum_thread.subject %></h1>
+      <p>by <%= link_to @forum_thread.user.first_name, "#" %> » <%= local_time(@forum_thread.created_at) %></p>
     </div>
+    <p><%= @forum_thread.content %></p>
   </div>
+  <br> 
+  <%= render @forum_thread.forum_posts %><br>
+  <h4><%= fa_icon "reply", text: "Reply" %></h4><br>
+  <%= render partial: "forum_posts/form" %>
 </div>
+

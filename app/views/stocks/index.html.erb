@@ -1,40 +1,25 @@
-<div>
-  <%= render "layouts/nav" %>
-  <div class="container">
-    <div class="col-sm-offset-2 col-sm-9" >
+<br>
+<div class="col-sm-offset-2 col-sm-9" >
+  <table class="table" id="stock_lists">
 
-      <% if flash[:success] %>
-        <div class="alert alert-success text-center" role="alert"><%= flash[:success] %></div>
-      <% end %>
+    <thead>
+      <th>Company</th>
+      <th>Symbol</th>
+      <th>Last Price</th>
+      <th></th>
+    </thead>
 
-      <% if flash[:alert] %>
-        <div class="alert alert-danger text-center" role="alert"><%= flash[:alert] %></div>
-      <% end %>
-      <br>
+    <tbody>
 
-      <br>
-      <table class="table" id="stock_lists">
+    <% @stocks.each do |stock| %>
+      <tr class="<%= cycle("odd", "even")%>">
+        <td><%= link_to stock.company, "stocks/#{stock.symbol}" %></td>
+        <td><%= stock.symbol %></td>
+        <td><%= number_to_currency(stock.last_price) %></td>
+        <td><%= render_button_for(stock) %></td>
+      </tr>
+      <% end %> 
+    </tbody>
+  </table>
 
-        <thead>
-          <th>Company</th>
-          <th>Symbol</th>
-          <th>Last Price</th>
-          <th></th>
-        </thead>
-
-        <tbody>
-
-        <% @stocks.each do |stock| %>
-          <tr class="<%= cycle("odd", "even")%>">
-            <td><%= link_to stock.company, "stocks/#{stock.symbol}" %></td>
-            <td><%= stock.symbol %></td>
-            <td><%= number_to_currency(stock.last_price) %></td>
-            <td><%= render_button_for(stock) %></td>
-          </tr>
-          <% end %> 
-        </tbody>
-      </table>
-
-    </div>
-  </div> 
 </div>

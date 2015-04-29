@@ -9,8 +9,19 @@
   <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
+  <div class="container">
+    <%= render "layouts/nav" %>
 
-  <%= yield %>
-
+    <div class="row">
+      <br>
+      <div class="col col-md-6 col-md-offset-3 flash-alert">
+        <% flash.each do |key, value| %>
+          <button class="alert close" data-dismiss="alert" aria-hidden="true">×</button>
+          <div class="text-center <%= flash_class(key) %>"><%= value %></div>
+        <% end %>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
 </body>
 </html>

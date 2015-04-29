@@ -1,82 +1,79 @@
-<div>
-  <%= render "layouts/nav" %>
 
-  <% if current_user.following? %>
-    <div class="container">
-      <div class="row">
-        <div class="col col-sm-offset-2 col-sm-8">
-          <div id="orders_chart" class="orders-chart" style="width: 100%; height: 400px;"></div>
+<% if current_user.following? %>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-offset-2 col-sm-8">
+        <div id="orders_chart" class="orders-chart" style="width: 100%; height: 400px;"></div>
 
-          <script type="text/javascript" charset="utf-8">
-          $(function () {
-            new Highcharts.StockChart({
-              chart: { renderTo: 'orders_chart' },
-              rangeSelector: {
-                selected: 4
-              },
-              <% if @stock %>
-                title: { text: "<%= @stock.company %>" },
-              <% else %>
-                title: { text: "Stock Trends" },
-              <% end %>
-              xAxis: { 
-                type: 'datetime'
-              },
-              yAxis: {
-                title: { text: 'Stock Price'}
-              },
-              series: <%= raw @series.to_json %>
-            });
-          });
-          </script>
-        </div>
-      </div>
-    </div>
-  <% else %>
-    <%= render 'follow_stocks_prompt' %>
-  <% end %>
-  
-  <div id="feed" class="feed">
-    <div role="tabpanel">
-      <!-- Nav tabs -->
-      <div class="nav-tab-holder">
-        <ul class="nav nav-justified nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">Chat</a></li>
-          <li role="presentation"><a href="#tweets" aria-controls="tweets" role="tab" data-toggle="tab">Tweets</a></li>
-          <li role="presentation"><a href="#articles" aria-controls="articles" role="tab" data-toggle="tab">Articles</a></li>
-          <center><h4 class="alert"> <%= @current_user.name %></h4></center>
-        </ul>
-        
-      </div>
-
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="chat">
-          <ul>
-            <%= render 'globalchat' %>
-          </ul>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="tweets">
-          <ul>
-              <% if @current_user.favorite_stocks.count >= 1 %>
-                <% @current_user.favorite_tweets.flatten.each do |tweet| %>
-                <li><%= link_to tweet.text, tweet.url.to_s %></li>
-                <% end %>
-              <% end %>
-          </ul>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="articles">
-          <ul>
-            <% if @current_user.favorite_stocks.count >= 1 %>
-              <% @current_user.favorite_articles.flatten.each do |article| %>
-              <li><%= link_to article["snippet"], article["web_url"] %></li>
-                <% end %>
+        <script type="text/javascript" charset="utf-8">
+        $(function () {
+          new Highcharts.StockChart({
+            chart: { renderTo: 'orders_chart' },
+            rangeSelector: {
+              selected: 4
+            },
+            <% if @stock %>
+              title: { text: "<%= @stock.company %>" },
+            <% else %>
+              title: { text: "Stock Trends" },
             <% end %>
-          </ul>
-        </div>
+            xAxis: { 
+              type: 'datetime'
+            },
+            yAxis: {
+              title: { text: 'Stock Price'}
+            },
+            series: <%= raw @series.to_json %>
+          });
+        });
+        </script>
       </div>
     </div>
+  </div>
+<% else %>
+  <%= render 'follow_stocks_prompt' %>
+<% end %>
 
+<div id="feed" class="feed">
+  <div role="tabpanel">
+    <!-- Nav tabs -->
+    <div class="nav-tab-holder">
+      <ul class="nav nav-justified nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">Chat</a></li>
+        <li role="presentation"><a href="#tweets" aria-controls="tweets" role="tab" data-toggle="tab">Tweets</a></li>
+        <li role="presentation"><a href="#articles" aria-controls="articles" role="tab" data-toggle="tab">Articles</a></li>
+        <center><h4 class="alert"> <%= @current_user.name %></h4></center>
+      </ul>
+      
+    </div>
 
-
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="chat">
+        <ul>
+          <%= render 'globalchat' %>
+        </ul>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="tweets">
+        <ul>
+            <% if @current_user.favorite_stocks.count >= 1 %>
+              <% @current_user.favorite_tweets.flatten.each do |tweet| %>
+              <li><%= link_to tweet.text, tweet.url.to_s %></li>
+              <% end %>
+            <% end %>
+        </ul>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="articles">
+        <ul>
+          <% if @current_user.favorite_stocks.count >= 1 %>
+            <% @current_user.favorite_articles.flatten.each do |article| %>
+            <li><%= link_to article["snippet"], article["web_url"] %></li>
+              <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+
+

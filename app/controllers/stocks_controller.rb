@@ -9,7 +9,7 @@ class StocksController < ApplicationController
     @stock = Stock.find_by_id(params[:id])
     if params[:follow] == "true"
       @stock.users << current_user unless @stock.users.include?(current_user)
-      flash[:success] = "You are now following #{@stock.company}"
+      flash[:notice] = "You are now following #{@stock.company}"
     elsif params[:follow] == "false"
       if is_favorite?
         current_user.favorites.find_by(stock_id: @stock.id).destroy
