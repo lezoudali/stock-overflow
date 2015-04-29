@@ -30,6 +30,6 @@ class FavoritesController < ApplicationController
       data << stock.quote
     end
 
-    render :json => data
+    render partial: "dashboard/favorites_table"
   end
 end
