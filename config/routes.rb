@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get 'users/edit'
 
-  post 'favorites/update', to: 'favorites#update'
+  post 'favorites/update'
+  post 'favorites/price_history'
+  post 'favorites/quote_data'
 
   devise_for :users, controllers: {omniauth_callbacks: "callbacks" }
   root 'dashboard#index'
