@@ -16,7 +16,7 @@ class StocksController < ApplicationController
       else
         @stock.users.delete(current_user)
       end
-      flash[:success] = "You stopped following #{@stock.company}"
+      flash[:alert] = "You stopped following #{@stock.company}"
     end
     redirect_to :back
   end
