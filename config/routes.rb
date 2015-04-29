@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :stocks, only: [:index, :update]
   get 'stocks/:symbol', to: "stocks#show"
+  get 'stocks/:symbol/series_data', to: "stocks#series_data"
 
   resources :forum_threads do 
     resources :forum_posts, module: :forum_threads

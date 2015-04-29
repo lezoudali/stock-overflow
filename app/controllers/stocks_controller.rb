@@ -25,6 +25,21 @@ class StocksController < ApplicationController
     @stock = Stock.find_by_symbol(params[:symbol].upcase)
   end
 
+  def series_data
+    stock = Stock.find_by_symbol(params[:symbol].upcase)
+    series = []
+    vals = {
+      name: stock.symbol,
+      pointInterval: 1.day * 1000,
+      pointStart: 1.year.ago.to_i * 1000,
+      data: stock.prices_with_weekend
+    }
+    series << vals
+
+    # binding.pry
+    render json: series
+  end
+
   def is_favorite?
     current_user.favorites.any? { |fav| fav.stock_id == @stock.id  }
   end
