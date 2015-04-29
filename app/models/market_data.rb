@@ -28,7 +28,7 @@ class MarketData
     begin
       JSON.load(open("#{BASE_URL}/InteractiveChart/json?parameters=#{formatted_params}"))
     rescue
-      chart(symbol, num_days)
+      retry
     end
   end
 
