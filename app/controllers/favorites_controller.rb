@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
     params[:ids].each do |id|
       current_user.favorite_stocks << Stock.find_by_id(id.to_i)
     end
+    render :json => []
   end
 
   def price_history

@@ -25,7 +25,11 @@ class MarketData
       }]
     }
     formatted_params = formatter(URI.encode(parameters.to_json))
-    JSON.load(open("#{BASE_URL}/InteractiveChart/json?parameters=#{formatted_params}"))
+    begin
+      JSON.load(open("#{BASE_URL}/InteractiveChart/json?parameters=#{formatted_params}"))
+    rescue
+      chart(symbol, num_days)
+    end
   end
 
   private

@@ -1,0 +1,63 @@
+<thead>
+  <tr>
+    <td></td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><strong><%= link_to stock.symbol, "stocks/#{stock.symbol}" %></strong></td>
+    <% end %>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Previous Close</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><%= number_to_currency(stock.quote.previous_close) %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>PE Ratio</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><%= stock.quote.pe_ratio %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>EPS</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><%= number_to_percentage(stock.quote.earnings_share) %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>Volume</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><%= stock.quote.volume.to_i %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>Market Cap</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><%= number_to_currency(stock.quote.market_capitalization) %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>Dividend Yield</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><%= number_to_percentage(stock.quote.dividend_yield, precision: 2) || 'N/A' %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>Dividend Date</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td><%= stock.quote.ex_dividend_date || 'N/A' %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>Sentiment</td>
+    <% current_user.favorite_stocks.each do |stock| %>
+      <td>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" style="width: <%= stock.percentage[:positive] %>%"></div>
+          <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= stock.percentage[:negative] %>%"></div>
+        </div>
+      </td>
+    <% end %>
+  </tr>
+</tbody>
