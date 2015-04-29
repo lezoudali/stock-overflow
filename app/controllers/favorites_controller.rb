@@ -10,7 +10,13 @@ class FavoritesController < ApplicationController
     prices = []
     params[:ids].each do |id|
       stock = Stock.find_by_id(id.to_i)
-      prices << stock.prices
+      vals = {
+        name: "#{stock.symbol}",
+        pointInterval: 1.day * 1000,
+        pointStart: 1.year.ago.to_i * 1000,
+        data: stock.prices_with_weekend
+      }
+      prices << vals
     end
 
     render :json => prices

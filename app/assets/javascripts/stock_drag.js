@@ -37,7 +37,8 @@ $(function(){
         method: "POST",
         data: {ids: ids},
       }).done(function(data){
-        console.log(data)
+        // console.log(data)
+        renderChart(data)
       });
 
       // Should return quote data for favorite stocks
@@ -52,4 +53,21 @@ $(function(){
 
     draggedFromStocks = false;
   });
+
+  var renderChart = function(data) {
+    new Highcharts.StockChart({
+      chart: { renderTo: 'orders_chart' },
+      rangeSelector: {
+        selected: 4
+      },
+      title: { text: "Stock Trends" },
+      xAxis: { 
+        type: 'datetime'
+      },
+      yAxis: {
+        title: { text: 'Stock Price'}
+      },
+      series: data
+    });
+  }
 });
