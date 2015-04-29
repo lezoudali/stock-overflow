@@ -1,5 +1,1 @@
-<%= form_for @stock do |f| %>
-  <%= f.hidden_field :id %>
-  <%= hidden_field_tag :follow, true %>
-  <%= f.submit :Follow, class: "btn btn-primary" %>
-<% end %>
+<%= link_to "Follow", stock_path(@stock, follow: true), method: :patch, class: "btn btn-primary" %>
