@@ -30,6 +30,24 @@ $(function(){
         data: { ids: ids},
         dataType: "json"
       });
+
+      // Should return price history for favorite stocks
+      $.ajax({
+        url: "/favorites/price_history",
+        method: "POST",
+        data: {ids: ids},
+      }).done(function(data){
+        console.log(data)
+      });
+
+      // Should return quote data for favorite stocks
+      $.ajax({
+        url: "/favorites/quote_data",
+        method: "POST",
+        data: {ids: ids},
+      }).done(function(data){
+        console.log(data)
+      });
     }
 
     draggedFromStocks = false;
