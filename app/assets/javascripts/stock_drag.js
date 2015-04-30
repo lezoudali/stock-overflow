@@ -39,12 +39,14 @@ $(function(){
   var draggedFromStocks;
 
   $("#favorite-stocks").sortable({
-    axis: "y"
+    axis: "y",
+    revert: true
   });
 
   $("#stock-list li").draggable({
     axis: "y",
-    connectToSortable: "#favorite-stocks"
+    connectToSortable: "#favorite-stocks",
+    revert: true
   });
 
   $( "#stock-list li" ).on( "dragstart", function( event, ui ) {
