@@ -28,7 +28,6 @@
         <li role="presentation"><a href="#articles" aria-controls="articles" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o fa-lg"></i></a></li>
         <center><h4 class="alert"> <%= @current_user.name %></h4></center>
       </ul>
-      
     </div>
 
     <!-- Tab panes -->
@@ -42,7 +41,7 @@
         <ul>
             <% if @current_user.favorite_stocks.count > 0 %>
               <% @current_user.favorite_tweets.flatten.each do |tweet| %>
-              <li><%= link_to tweet.text, tweet.url.to_s %></li>
+              <li><%= link_to truncate(tweet.text, length: 43), tweet.url.to_s %></li>
               <% end %>
             <% end %>
         </ul>
@@ -51,7 +50,7 @@
         <ul>
           <% if @current_user.favorite_stocks.count >= 1 %>
             <% @current_user.favorite_articles.flatten.each do |article| %>
-            <li><%= link_to article["snippet"], article["web_url"] %></li>
+            <li><%= link_to truncate(article["snippet"], length: 43), article["web_url"] %></li>
               <% end %>
           <% end %>
         </ul>

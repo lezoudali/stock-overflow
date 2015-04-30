@@ -5,6 +5,28 @@ class StocksController < ApplicationController
     @stocks = Stock.all
   end
 
+
+  def follow
+    @stock = Stock.find_by_id(params[:id])
+    @stock.users << current_user
+    flash[:notice] = "You are now following #{@stock.company}"
+    redirect_to :back
+  end
+
+
+  def unfollow
+    @stock = Stock.find_by_id(params[:id])
+    @stock.users.delete(current_user)
+    flash[:alert] = "You stopped following #{@stock.company}"
+    redirect_to :back
+  end
+
+  def unfavorite
+    current_user.favorites.find_by(stock_id: @stock.id).destroy
+    redirect_to :back
+  end
+
+
   def update
     @stock = Stock.find_by_id(params[:id])
     if params[:follow] == "true"

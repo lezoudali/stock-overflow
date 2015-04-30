@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+
+
   def update
     current_user.favorite_stocks.destroy_all
     params[:ids].each do |id|
@@ -31,5 +33,13 @@ class FavoritesController < ApplicationController
     end
 
     render partial: "dashboard/favorites_table"
+  end
+
+
+  def remove
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy 
+    flash[:info] = "#{@favorite.stock.symbol} was removed from your favorites."
+    redirect_to :back
   end
 end
