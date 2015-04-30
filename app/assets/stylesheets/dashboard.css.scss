@@ -35,7 +35,6 @@
     width: inherit;
     background: #126296;
     padding: 10px 0;
-    box-shadow: -1px 0 3px #000;
     z-index: 102;
 
     .pipe {
@@ -78,11 +77,6 @@
     }
   }
 
-  h4 {
-    color: #428bca;
-    text-align: center;
-  }
-
   .glyphicon-star {
     color: yellow;
   }
@@ -96,62 +90,6 @@
   margin-top: 300px;
 }
   
-.spin-container {
-  display: inline-block;
-  margin-top: 150px;
-  margin-left: 450px;
-  vertical-align: center;
-  horizontal-align: center;
-}
-
-@-webkit-keyframes windcatcherSpin {
-  from { -webkit-transform: rotateY(0deg) rotateX(-20deg); }
-  to { -webkit-transform: rotateY(360deg) rotateX(-20deg); }
-}
-@keyframes windcatcherSpin {
-  from { transform: rotateY(0deg) rotateX(-20deg); }
-  to { transform: rotateY(360deg) rotateX(-20deg); }
-}
-
-@-webkit-keyframes windcatcherBg {
-  0% { background-color: rgb(255, 0, 0); }
-  50% { background-color: rgb(150, 0, 0); }
-  51% { background-color: rgb(255, 100, 100); }
-  70% { background-color: rgb(255, 25, 25); }
-  100% { background-color: rgb(255, 0, 0); }
-}
-@keyframes windcatcherBg {
-  0% { background-color: rgb(255, 0, 0); }
-  50% { background-color: rgb(150, 0, 0); }
-  51% { background-color: rgb(255, 100, 100); }
-  70% { background-color: rgb(255, 25, 25); }
-  100% { background-color: rgb(255, 0, 0); }
-}
-
-.spinner.windcatcher {
-  width: 4em;
-  perspective: 50em;
-  -webkit-animation: rotate 4s linear infinite;
-  animation: rotate 4s linear infinite;
-}
-
-.spinner.windcatcher .blade {
-  height: 0.5em;
-  background: red;
-  margin-bottom: 0.1em;
-  -webkit-animation: windcatcherSpin 4s linear infinite, windcatcherBg 2s linear infinite;
-  animation: windcatcherSpin 4s linear infinite, windcatcherBg 2s linear infinite;
-}
-
-.spinner.windcatcher .blade:nth-child(1) { -webkit-animation-delay: 0s; animation-delay: 0s; }
-.spinner.windcatcher .blade:nth-child(2) { -webkit-animation-delay: 0.25s; animation-delay: 0.25s; }
-.spinner.windcatcher .blade:nth-child(3) { -webkit-animation-delay: 0.5s; animation-delay: 0.5s; }
-.spinner.windcatcher .blade:nth-child(4) { -webkit-animation-delay: 0.75s; animation-delay: 0.75s; }
-.spinner.windcatcher .blade:nth-child(5) { -webkit-animation-delay: 1s; animation-delay: 1s; }
-.spinner.windcatcher .blade:nth-child(6) { -webkit-animation-delay: 1.25s; animation-delay: 1.25s; }
-.spinner.windcatcher .blade:nth-child(7) { -webkit-animation-delay: 1.5s; animation-delay: 1.5s; }
-.spinner.windcatcher .blade:nth-child(8) { -webkit-animation-delay: 1.75s; animation-delay: 1.75s; }
-
 
 
 .orders-chart {
@@ -194,68 +132,18 @@
   table-layout: fixed;
 }
 
-#feed {
-  border: 5px solid #177BBB !important;
-  background: white;
+.side-nav p {
+  color: #eee;
 }
 
 .side-nav h4 , .side-nav a {
-  color: #d7ecfa !important;
-}
-center h4 {
-  background: #177BBB !important;
-  border: none !important;
-  border-radius: 0px !important;
+  color: #ffffff;
 }
 
-
-.nav-tabs {
-  margin-top: 5px;
-  background: #177BBB;
-  border: none;
-  border-radius: 0px;
-
-  > li.active {
-    a, &:focus {
-      border: 0 !important;
-      border-bottom: 2px solid #d7ecfa !important;
-      color: #d7ecfa !important;
-    }
-  }
-
-  a {
-    border-bottom: 1.5px solid #d7ecfa !important;
-    margin-right: 2px !important;
-    padding: 5px 0 5px 0px !important; 
-    border-radius: 0 !important;
-    background-color: #177BBB !important;
-    color: #126295 !important;
-    &:hover { 
-      background: #177BBB !important;
-      border-top: 0 !important;
-      border-left: 0 !important;
-      border-right: 0 !important;
-      /*border-bottom: 3px;*/
-      color: #d7ecfa !important;
-    }
-  }
-  li:nth-child(1) a {
-    margin-left: 5px !important;
-  }
+.side-nav a:hover {
+  color: #ffffff;
 }
 
-#message {
-  height: 50px;
-  border-top: 10px solid #177BBB;
-}
-
-.nav-tab-holder h4 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 20px;
-  color: #d7ecfa;
-  letter-spacing: 0.5px;
-}
 
 #stock-list a, #favorite-stocks a {
   font-size: 12px;
@@ -263,9 +151,7 @@ center h4 {
 
 
 .side-nav.container h4 {
-  color: #428bca;
   text-align: center;
-  font-weight: 700;
   letter-spacing: 1px;
 }
 
