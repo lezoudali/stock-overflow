@@ -33,7 +33,7 @@
     position: fixed;
     top: 0;
     width: inherit;
-    background: rgba(0, 0, 0, 0.2);
+    background: #126296;
     padding: 10px 0;
     box-shadow: -1px 0 3px #000;
     z-index: 102;
@@ -134,4 +134,98 @@
 
 .table {
   table-layout: fixed;
+}
+
+#feed {
+  border: 5px solid #177BBB !important;
+  background: white;
+}
+
+.side-nav h4 , .side-nav a {
+  color: #d7ecfa !important;
+}
+center h4 {
+  background: #177BBB !important;
+  border: none !important;
+  border-radius: 0px !important;
+}
+
+
+.nav-tabs {
+  margin-top: 5px;
+  background: #177BBB;
+  border: none;
+  border-radius: 0px;
+
+  > li.active {
+    a, &:focus {
+      border: 0 !important;
+      border-bottom: 2px solid #d7ecfa !important;
+      color: #d7ecfa !important;
+    }
+  }
+
+  a {
+    border-bottom: 1.5px solid #d7ecfa !important;
+    margin-right: 2px !important;
+    padding: 5px 0 5px 0px !important; 
+    border-radius: 0 !important;
+    background-color: #177BBB !important;
+    color: #126295 !important;
+    &:hover { 
+      background: #177BBB !important;
+      border-top: 0 !important;
+      border-left: 0 !important;
+      border-right: 0 !important;
+      /*border-bottom: 3px;*/
+      color: #d7ecfa !important;
+    }
+  }
+  li:nth-child(1) a {
+    margin-left: 5px !important;
+  }
+}
+
+#message {
+  height: 50px;
+  border-top: 10px solid #177BBB;
+}
+
+.nav-tab-holder h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  color: #d7ecfa;
+  letter-spacing: 0.5px;
+}
+
+#stock-list a, #favorite-stocks a {
+  font-size: 12px;
+}
+
+
+.side-nav.container h4 {
+  color: #428bca;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.side-nav div div:nth-child(1) a {
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1px;
+}
+
+
+.progress-bar-success {
+  background: #17bba9 !important;
+}
+
+.progress-bar-danger {
+  background: #FB625E !important;
+}
+
+.btn-danger {
+  background: #FB625E !important;
 }
