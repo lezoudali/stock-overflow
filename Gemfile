@@ -71,3 +71,4 @@ gem "font-awesome-rails"
 gem 'sentiment_lib'
 gem 'thin'
 gem 'faye'
+gem 'jquery-ui-rails'
