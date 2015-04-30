@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
   private
  
   def layout
-    is_a?(Devise::SessionsController) ? "devise" : "application"
+    if devise_controller? 
+      "devise"
+    else
+      "application"
+    end
   end
   
 end
