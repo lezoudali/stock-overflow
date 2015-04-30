@@ -1,17 +1,102 @@
 .feed {
-  /*padding: 5px !important;*/
   position: fixed;
   top: 0;
   right: 0;
   width: 16.6667%;
   padding: 100px 10px 30px;
   height: 100%;
-  background: #E5E5E5;
+  background: #FFFFFF;
   overflow: scroll;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  /*border: 5px solid #177BBB;*/
 
   .tab-content li {
     border-bottom: 1px solid #aaa;
     padding: 10px;
   }
+}
+
+#new_message_form input[type="text"] {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 16.6667%;
+  padding: 5px;
+  font-size: 1.5rem;
+}
+
+.nav-tab-holder {
+  position: fixed;
+  background: rgba(221, 221, 221, 0.9);
+  top: 0;
+  right: 0;
+  width: 16.6667%;
+  border-bottom: 1px solid #D0D0D0;
+
+  h4 {
+    margin: 0;
+  }
+}
+
+#chat_room {
+  margin-bottom: 50px;
+
+  p {
+    padding: 5px;
+    border-radius: 3px;
+    color: #172E3D;
+  }
+}
+
+#message {
+  height: 50px;
+  /*border-top: 10px solid #177BBB;*/
+}
+
+.nav-tab-holder h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.nav-tabs {
+  background: #177BBB;
+  border: none;
+  border-radius: 0px;
+
+  > li.active {
+    a, &:focus {
+      border: none;
+      border-bottom: 2px solid #d7ecfa;
+      color: #d7ecfa;
+    }
+  }
+
+  a {
+    border-bottom: 1.5px solid #d7ecfa;
+    margin-right: 2px;
+    padding: 5px 0 5px 0px; 
+    border-radius: 0;
+    background-color: #177BBB;
+    color: #126295;
+    &:hover { 
+      background: #177BBB;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      /*border-bottom: 3px;*/
+      color: #d7ecfa;
+    }
+  }
+  li:nth-child(1) a {
+    margin-left: 5px;
+  }
+}
+
+.feed h4 {
+  background: none !important;
+  border: none !important;
+  border-radius: 0px !important;
 }

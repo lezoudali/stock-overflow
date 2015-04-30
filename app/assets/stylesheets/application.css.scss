@@ -75,3 +75,31 @@ p {
 body > .container {
   background: white;
 }
+
+/* Overide bootstrap Stuff */
+
+.nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a, .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
+  border: none;
+}
+
+.nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
+  border: none;
+  border-radius: 0;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #FFF;
+  background: none;
+}
+
+.nav-tabs > li > a:hover {
+  border: none;
+}
+
+.nav-tabs > li > a:hover {
+  border-color: #eeeeee #eeeeee #ddd;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background: none;
+}
