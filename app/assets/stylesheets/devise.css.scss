@@ -8,7 +8,7 @@
  */
 @import "bootstrap";
 
-.devise-login {
+.devise-login, .devise-password, .devise-registration {
   position: absolute;
   top: 50px;
   left: 200px;
@@ -45,7 +45,7 @@
   margin-bottom: 8px; 
 }
 
-.new_user {
+.links {
     a {
     color: d7ecfa !important;
     letter-spacing: 0.5;
