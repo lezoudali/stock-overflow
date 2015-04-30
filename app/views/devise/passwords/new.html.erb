@@ -1,17 +1,48 @@
 <% provide(:title, "Password")%>
-<h2>Forgot your password?</h2>
+<div class="devise-password">
+  <h3 class="text-center">Forgot password?</h3>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <div class="form-group">
+      <% if resource.errors.any? %>
+        <div id="error_explanation" class= "alert alert-danger alert-dismissable">
+          <button class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <ul>
+          <% resource.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Email instructions", class: "btn btn-primary form-control" %>
+    </div>
+  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+    <div class="links">
+      <%- if controller_name != 'sessions' %>
+      <%= link_to "Log in", new_session_path(resource_name) %><br />
+      <% end -%>
+    </div>
+    <br>
+
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-success form-control" %><br />
+    <% end -%>
+
+    <br>
+
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to fa_icon("facebook", text: "Sign in with #{provider.to_s.titleize}"), omniauth_authorize_path(resource_name, provider), class: "btn btn-block btn-social btn-facebook" %><br />
+    <% end -%>
+  <% end -%>
+
+
+</div>
