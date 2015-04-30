@@ -7,4 +7,13 @@ module ApplicationHelper
       when :warning then "alert alert-warning alert-dismissable"
     end
   end
+
+  def full_title(page_title = "")
+    base_title = "StockOverflow"  
+    if page_title.empty?                              
+      base_title                                      
+    else
+      "#{page_title} | #{base_title}"
+    end
+  end
 end
