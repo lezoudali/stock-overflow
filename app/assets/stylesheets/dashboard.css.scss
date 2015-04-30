@@ -95,6 +95,18 @@
 .follow-stocks-prompt {
   margin-top: 300px;
 }
+  
+.spinner {
+  display: inline-block;
+  margin-top: 150px;
+  margin-left: 450px;
+  vertical-align: center;
+  horizontal-align: center;
+}
+
+.fa-circle-o-notch {
+  color: #177BBB !important;
+}
 
 .orders-chart {
   height: 500px;
