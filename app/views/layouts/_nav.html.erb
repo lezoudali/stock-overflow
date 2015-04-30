@@ -24,14 +24,14 @@
     </div><br>
   <% end %>
 
-  <h4><i class="fa fa-heart-o"></i> Favorite Stocks</h4>
-  <p class="text-center">Drag to add stock to favorites</p>
+  <h4><i class="fa fa-star-o"></i> Favorite Stocks</h4>
+  <!-- <p class="text-center">Drag to add stock to favorites</p> -->
 
   <ul id="favorite-stocks" class="favorite-stocks">
     <% current_user.favorites.each do |favorite| %>
       <li class='row' data-id="<%= favorite.stock.id %>">
         <div class="col-sm-10">
-          <i class="fa fa-bars" style="padding-right: 1rem;"></i>
+          <i class="fa fa-arrows-v" style="padding-right: 1rem;"></i>
           <%= link_to "#{truncate(favorite.stock.company, length: 14)}  (#{favorite.stock.symbol})", "#{stocks_path}/#{favorite.stock.symbol}" %>
         </div>
         <div class="col-sm-2">
@@ -46,7 +46,7 @@
     <% current_user.stocks_without_favorites.each do |stock| %>
       <li class='row' data-id="<%= stock.id %>">
         <div class="col-sm-10">
-          <i class="fa fa-bars" style="padding-right: 0.5rem;"></i>
+          <i class="fa fa-arrows-v list" style="padding-right: 0.5rem;"></i>
           <%= link_to "#{truncate(stock.company, length: 14)}  (#{stock.symbol})", "#{stocks_path}/#{stock.symbol}" %>
         </div>
         <div class="col-sm-2">

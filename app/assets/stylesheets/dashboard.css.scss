@@ -1,5 +1,4 @@
 
-
 .profile-pic {
   float: left;
   margin-right: 10px;
@@ -55,10 +54,22 @@
         display: none;
         background: none;
         border: none;
-        color: red;
         font-size: 1em;
       }
+
+      .fa-arrows-v{
+        color: #126295;
+      }
+      
+      .fa-arrows-v.list {
+        color: #177bbb; 
+      }
     }
+
+    li:hover .fa-arrows-v {
+      color: #d7ecfa;
+    }
+
 
     li:hover .remove-stock {
       display: block;
