@@ -14,7 +14,6 @@ $(function(){
   } 
   else if(window.location.pathname.match(/\/stocks\/\w+/)) {
     symbol = window.location.pathname.match(/\/stocks\/(\w+)/)[1]
-    console.log(symbol)
     $.ajax({
       url: "/stocks/" + symbol + "/series_data",
       method: "GET",
@@ -25,7 +24,7 @@ $(function(){
         rangeSelector: {
           selected: 4
         },
-        title: { text: "Stock Trends" },
+        title: { text: symbol },
         xAxis: { 
           type: 'datetime'
         },
