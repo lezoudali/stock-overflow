@@ -53,6 +53,8 @@ $(function(){
 
   $("#favorite-stocks").on( "sortreceive", function( event, ui ) {
     if(draggedFromStocks) {
+      renderLoader();
+
       if($("#favorite-stocks").children().length == 6) {
         $("#favorite-stocks li").last().appendTo("#stock-list");
       }
@@ -110,5 +112,22 @@ $(function(){
 
   var renderFavoritesTable = function(html) {
     $("#favorites-table").html(html)
+  };
+
+  var renderLoader = function() {
+    $('#orders_chart').html(
+      '<div class="spin-container">' +
+        '<div class="spinner windcatcher" id="windcatcher">' +
+          '<div class="blade"></div>' +
+          '<div class="blade"></div>' +
+          '<div class="blade"></div>' +
+          '<div class="blade"></div>' +
+          '<div class="blade"></div>' +
+          '<div class="blade"></div>' +
+          '<div class="blade"></div>' +
+          '<div class="blade"></div>' +
+        '</div>' +
+      '</div>'
+    )
   };
 });
