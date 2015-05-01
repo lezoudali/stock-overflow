@@ -28,6 +28,10 @@
   z-index: 101;
   overflow: scroll;
 
+  a:focus {
+    color: #fff;
+  }
+
   > .row:first-child {
     position: fixed;
     top: 0;
