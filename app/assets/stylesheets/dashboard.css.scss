@@ -20,7 +20,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 90px;
+  padding-top: 120px;
   background: #177bbb;
   height: 100%;
   width: 16.6666666667%;
@@ -39,6 +39,18 @@
     .pipe {
       color: #E5E5E5;
     }
+  }
+
+  form {
+    position: fixed;
+    width: 16.6667%;
+    left: 0;
+    top: 80px;
+    z-index: 101;
+  }
+
+  #stock-search {
+    border-radius: 0;
   }
 
   .fa-times {
@@ -122,10 +134,10 @@
   max-height: 300px;
   overflow-y: scroll;
   position: absolute;
-  width: 90%;
+  width: 100%;
   z-index: 101;
   background-color: #126296;
-  border-radius: 3px;
+  border-radius: 0;
   box-shadow: 0 0 3px #000;
 
   ul {

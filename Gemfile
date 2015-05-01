@@ -38,10 +38,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :assets do
-  gem 'jquery-ui-rails'
-end
-
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'devise'
 gem 'figaro'
